@@ -1,0 +1,53 @@
+#!/bin/sh
+tmux_session=$1
+tmux has-session -t $tmux_session
+
+if [ $? != 0 ]
+then
+  if [ $tmux_session == 'work' ]
+  then
+    # Create a work session
+    tmux new-session -s work -n editor -d
+
+    # Open into the geckoboard app and fire up Vim
+    tmux send-keys -t work 'cd ~/Sites/geckoboard' C-m
+    tmux send-keys -t work 'vim' C-m
+    # split off a console under the editor
+    tmux split-window -v -p 25 -t work
+    tmux send-keys -t work 'cd ~/Sites/geckoboard;clear' C-m
+    # split again and tail apache error log
+    tmux split-window -h -t work
+    tmux send-keys -t work 'tail -f /var/log/apache2/error_log' C-m
+
+    # Open window for the ruby APIs
+    tmux new-window -n ruby-apis -t work
+    tmux split-window -v -t work:1
+    tmux split-window -v -t work:1
+    tmux select-layout -t work even-vertical
+    tmux send-keys -t work:1.0 'cd ~/Sites/gecko-data; RACK_ENV=sandbox bundle exec rackup config.ru -p 9292' C-m
+    tmux send-keys -t work:1.1 'cd ~/Sites/management-api; RACK_ENV=sandbox bundle exec rackup config.ru -p 9293' C-m
+    tmux send-keys -t work:1.2 'cd ~/Sites/gecko-auth; RACK_ENV=sandbox bundle exec rackup config.ru -p 9294' C-m
+
+    # Select Vim ready to code
+    tmux select-window -t work:0
+    tmux select-pane -t work:0.0
+  else
+    # Create a work session
+    tmux new-session -s play -n editor -d
+
+    # Open vim in the Sites directory
+    tmux send-keys -t play 'cd ~/Sites' C-m
+    tmux send-keys -t play 'vim' C-m
+    # split off a console under the editor
+    tmux split-window -v -p 25 -t play
+    tmux send-keys -t play 'cd ~/Sites' C-m
+    # split again and tail apache error log
+    tmux split-window -h -t play
+    tmux send-keys -t play 'tail -f /var/log/apache2/error_log' C-m
+
+    # Select Vim ready to code
+    tmux select-pane -t play:0.0
+  fi
+fi
+
+tmux attach -t $tmux_session
