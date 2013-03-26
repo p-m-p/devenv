@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Copy config scripts
-config_files="vimrc tmux.conf"
+config_files="vimrc tmux.conf gitignore gitconfig"
 for config in $config_files
 do
   cp ./$config ~/.$config
