@@ -7,6 +7,9 @@ do
   cp ./$config ~/.$config
 done
 
+# TMUX session start up
+cp ./tmux-launch ~/development
+
 # Setup vim and plugins
 vim_dirs="autoload bundle colors"
 for vim_dir in $vim_dirs

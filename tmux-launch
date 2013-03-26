@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 tmux_session=$1
 tmux has-session -t $tmux_session
 
