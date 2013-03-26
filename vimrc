@@ -3,7 +3,7 @@ syntax on
 filetype plugin indent on
 
 set t_Co=256
-colorscheme xoria256
+colorscheme bubblegum
 
 set guifont=Monaco:h12
 set tabstop=2
@@ -12,7 +12,12 @@ set nocompatible
 set number
 set autoindent
 set smartindent
+set smarttab
 set expandtab
+
+" Search
+set incsearch
+set ignorecase smartcase
 
 " Cursor
 if exists('$TMUX')
@@ -29,9 +34,18 @@ if version > 702
   set colorcolumn=80
 endif
 
-" Show nerd tree when running in GUI mode
-if has("gui_running")
-  set guioptions=egmrt
-  autocmd vimenter * NERDTree
-  autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
-endif
+" Auto add matching pairs
+:inoremap ( ()<Esc>i
+:inoremap [ []<Esc>i
+:inoremap { {}<Esc>i
+:inoremap ' ''<Esc>i
+:inoremap " ""<Esc>i
+
+" Strip whitespace
+fun! <SID>StripTrailingWhitespaces()
+  let l = line(".")
+  let c = col(".")
+  %s/\s\+$//e
+  call cursor(l, c)
+endfun
+autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
