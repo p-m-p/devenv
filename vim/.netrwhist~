@@ -1,0 +1,10 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =8
+let g:netrw_dirhist_1='/Users/phil/.turses'
+let g:netrw_dirhist_2='/Users/phil/Sites/data-pusher'
+let g:netrw_dirhist_3='/Users/phil/Sites/geckoboard/sandbox/de12a31d20f505bdcaede173768b96ca'
+let g:netrw_dirhist_4='/Users/phil/Sites/gecko-js/v3/specs'
+let g:netrw_dirhist_5='/Users/phil/Sites/meecrob/views/admin'
+let g:netrw_dirhist_6='/Users/phil/Sites/gecko-js/v2/templates'
+let g:netrw_dirhist_7='/Users/phil/Sites/geckoboard/stylesheets/sass'
+let g:netrw_dirhist_8='/Users/phil/Sites/geckoboard/stylesheets/sass/add-widget-screen'
