@@ -1,0 +1,13 @@
+# Editor files
+##############
+*.profile
+*.project
+*.swp
+
+# Logs and config
+#################
+*.log
+*.sqlite
+*.swo
+.sass-cache
+.DS_Store
