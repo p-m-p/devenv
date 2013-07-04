@@ -30,6 +30,7 @@ declare -A vim_plugins
 vim_plugins["vim-haml"]="git@github.com:tpope/vim-haml.git"
 vim_plugins["vim-handlebars"]="git@github.com:nono/vim-handlebars.git"
 vim_plugins["vim-javascript"]="git@github.com:pangloss/vim-javascript.git"
+vim_plugins["vim-snipmate"]="git@github.com:p-m-p/snipmate.vim.git"
 
 for plugin in ${!vim_plugins[@]}
 do
