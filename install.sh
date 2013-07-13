@@ -1,18 +1,27 @@
 #!/usr/bin/env bash
 
+vim_plugins=(
+  "git@github.com:tpope/vim-haml.git"
+  "git@github.com:nono/vim-handlebars.git"
+  "git@github.com:pangloss/vim-javascript.git"
+  "git@github.com:p-m-p/snipmate.vim.git"
+)
+
 # Copy config scripts
-config_files="vimrc tmux.conf gitignore gitconfig"
-for config in $config_files
+for config in $( ls ./dot-files )
 do
-  cp ./$config ~/.$config
+  cp ./dot-files/$config ~/.$config
 done
 
 # TMUX session start up
-cp ./tmux-launch ~/development
+if [ -d ~/development ]; then
+  cp ./tmux-launch ~/development
+else
+  cp ./tmux-launch ~
+fi
 
 # Setup vim and plugins
-vim_dirs="autoload bundle colors"
-for vim_dir in $vim_dirs
+for vim_dir in $( ls vim )
 do
   if [ ! -d ~/.vim/$vim_dir ]; then
     mkdir ~/.vim/$vim_dir
@@ -26,15 +35,14 @@ do
   fi
 done
 
-declare -A vim_plugins
-vim_plugins["vim-haml"]="git@github.com:tpope/vim-haml.git"
-vim_plugins["vim-handlebars"]="git@github.com:nono/vim-handlebars.git"
-vim_plugins["vim-javascript"]="git@github.com:pangloss/vim-javascript.git"
-vim_plugins["vim-snipmate"]="git@github.com:p-m-p/snipmate.vim.git"
 
-for plugin in ${!vim_plugins[@]}
+for plugin in ${vim_plugins[@]}
 do
-  if [ ! -d ~/.vim/bundle/$plugin ]; then
-    git clone ${vim_plugins[$plugin]} ~/.vim/bundle/$plugin
+  plugin_name=$( echo $plugin | sed -E 's;^.*/(.*).git$;\1;' )
+  plugin_dir=~/.vim/bundle/$plugin_name
+  echo $plugin_dir
+
+  if [ ! -d $plugin_dir ]; then
+    git clone $plugin $plugin_dir
   fi
 done
