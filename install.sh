@@ -20,17 +20,23 @@ else
   cp ./tmux-launch ~
 fi
 
-# Setup vim and plugins
-for vim_dir in $( ls vim )
+if [ ! -d ~/.vim ]; then
+  echo 'Unable to locate ~/.vim directory for current user'
+  exit $?
+fi
+
+# Setup vim
+for vim_dir in $( ls ./vim )
 do
   if [ ! -d ~/.vim/$vim_dir ]; then
+    echo "Setting up vim directory: $vim_dir"
     mkdir ~/.vim/$vim_dir
   fi
 
   if [ -d ./vim/$vim_dir ]; then
     for vim_file in $( ls ./vim/$vim_dir )
     do
-      cp ./vim/$vim_dir/$vim_file ~/.vim/$vim_dir/$vim_file
+      cp -r ./vim/$vim_dir/$vim_file ~/.vim/$vim_dir/$vim_file
     done
   fi
 done
@@ -40,9 +46,10 @@ for plugin in ${vim_plugins[@]}
 do
   plugin_name=$( echo $plugin | sed -E 's;^.*/(.*).git$;\1;' )
   plugin_dir=~/.vim/bundle/$plugin_name
-  echo $plugin_dir
 
   if [ ! -d $plugin_dir ]; then
+    echo
+    echo "Installing vim plugin: $plugin_name"
     git clone $plugin $plugin_dir
   fi
 done

@@ -40,6 +40,7 @@ endif
 :inoremap { {}<Esc>i
 :inoremap ' ''<Esc>i
 :inoremap " ""<Esc>i
+:inoremap ` ``<Esc>i
 
 " Strip whitespace
 fun! <SID>StripTrailingWhitespaces()
