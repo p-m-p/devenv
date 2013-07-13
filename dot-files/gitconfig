@@ -2,7 +2,7 @@
 	ui = true
 [user]
 	name = Phil Parsons
-	email = phil@geckoboard.com
+	email = phil.m.parsons@gmail.com
 [core]
 	excludesfile = ~/.gitignore
 	editor = /usr/bin/vim
