@@ -41,7 +41,7 @@ do
   fi
 done
 
-
+# Install Vim plugins
 for plugin in ${vim_plugins[@]}
 do
   plugin_name=$( echo $plugin | sed -E 's;^.*/(.*).git$;\1;' )
