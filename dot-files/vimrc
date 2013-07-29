@@ -4,6 +4,7 @@ filetype plugin indent on
 
 set t_Co=256
 colorscheme bubblegum
+let g:airline_theme = "bubblegum"
 
 set guifont=Monaco:h12
 set tabstop=2

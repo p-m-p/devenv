@@ -5,6 +5,7 @@ vim_plugins=(
   "git@github.com:nono/vim-handlebars.git"
   "git@github.com:pangloss/vim-javascript.git"
   "git@github.com:p-m-p/snipmate.vim.git"
+  "git@github.com:p-m-p/vim-airline.git"
 )
 
 # Copy config scripts
