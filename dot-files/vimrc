@@ -2,7 +2,7 @@ call pathogen#infect()
 syntax on
 filetype plugin indent on
 
-set t_Co=256
+set t_Co=257
 colorscheme bubblegum
 let g:airline_theme = "bubblegum"
 
@@ -15,6 +15,8 @@ set autoindent
 set smartindent
 set smarttab
 set expandtab
+set ttimeoutlen=50
+set laststatus=2
 
 " Search
 set incsearch
