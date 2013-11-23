@@ -7,12 +7,13 @@ vim_plugins=(
   "git@github.com:p-m-p/snipmate.vim.git"
   "git@github.com:tpope/vim-fugitive.git"
   "git@github.com:bling/vim-airline.git"
+  "git@github.com:wavded/vim-stylus.git"
 )
 
 # Copy config scripts
 for config in $( ls ./dot-files )
 do
-  cp ./dot-files/$config ~/.$config
+  cp ./dot-files/$config ../.$config
 done
 
 # TMUX session start up
@@ -22,15 +23,15 @@ else
   cp ./tmux-launch ~
 fi
 
-if [ ! -d ~/.vim ]; then
-  echo 'Unable to locate ~/.vim directory for current user'
+if [ ! -d ../.vim ]; then
+  echo 'Unable to locate .vim directory for current user'
   exit 1
 fi
 
 # Setup vim
 for vim_dir in $( ls ./vim )
 do
-  if [ ! -d ~/.vim/$vim_dir ]; then
+  if [ ! -d ../.vim/$vim_dir ]; then
     echo "Setting up vim directory: $vim_dir"
     mkdir ~/.vim/$vim_dir
   fi
@@ -38,7 +39,7 @@ do
   if [ -d ./vim/$vim_dir ]; then
     for vim_file in $( ls ./vim/$vim_dir )
     do
-      cp -r ./vim/$vim_dir/$vim_file ~/.vim/$vim_dir/$vim_file
+      cp -r ./vim/$vim_dir/$vim_file ../.vim/$vim_dir/$vim_file
     done
   fi
 done
@@ -47,7 +48,7 @@ done
 for plugin in ${vim_plugins[@]}
 do
   plugin_name=$( echo $plugin | sed -E 's;^.*/(.*).git$;\1;' )
-  plugin_dir=~/.vim/bundle/$plugin_name
+  plugin_dir=../.vim/bundle/$plugin_name
 
   if [ ! -d $plugin_dir ]; then
     echo
