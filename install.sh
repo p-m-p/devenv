@@ -18,9 +18,9 @@ done
 
 # TMUX session start up
 if [ -d ~/development ]; then
-  cp ./tmux-launch ~/development
+  cp ./tmux-launch ../development
 else
-  cp ./tmux-launch ~
+  cp ./tmux-launch ../
 fi
 
 if [ ! -d ../.vim ]; then
@@ -33,7 +33,7 @@ for vim_dir in $( ls ./vim )
 do
   if [ ! -d ../.vim/$vim_dir ]; then
     echo "Setting up vim directory: $vim_dir"
-    mkdir ~/.vim/$vim_dir
+    mkdir ../.vim/$vim_dir
   fi
 
   if [ -d ./vim/$vim_dir ]; then
