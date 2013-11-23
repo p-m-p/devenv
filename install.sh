@@ -1,5 +1,11 @@
 #!/usr/bin/env bash
 
+if [ ! -n $HOME_DIR ]; then
+  HOME_DIR="~"
+fi
+
+VIM_DIR="$HOME_DIR/.vim"
+
 vim_plugins=(
   "git@github.com:tpope/vim-haml.git"
   "git@github.com:nono/vim-handlebars.git"
@@ -13,33 +19,33 @@ vim_plugins=(
 # Copy config scripts
 for config in $( ls ./dot-files )
 do
-  cp ./dot-files/$config ../.$config
+  cp ./dot-files/$config $HOME_DIR/.$config
 done
 
 # TMUX session start up
 if [ -d ~/development ]; then
-  cp ./tmux-launch ../development
+  cp ./tmux-launch $HOME_DIR/development
 else
-  cp ./tmux-launch ../
+  cp ./tmux-launch $HOME_DIR
 fi
 
-if [ ! -d ../.vim ]; then
+if [ ! -d $VIM_DIR ]; then
   echo 'Unable to locate .vim directory for current user'
   exit 1
 fi
 
 # Setup vim
-for vim_dir in $( ls ./vim )
+for fldr in $( ls ./vim )
 do
-  if [ ! -d ../.vim/$vim_dir ]; then
-    echo "Setting up vim directory: $vim_dir"
-    mkdir ../.vim/$vim_dir
+  if [ ! -d $VIM_DIR/$fldr ]; then
+    echo "Setting up vim directory: $fldr"
+    mkdir $VIM_DIR/$fldr
   fi
 
-  if [ -d ./vim/$vim_dir ]; then
-    for vim_file in $( ls ./vim/$vim_dir )
+  if [ -d ./vim/$fldr ]; then
+    for vim_file in $( ls ./vim/$fldr )
     do
-      cp -r ./vim/$vim_dir/$vim_file ../.vim/$vim_dir/$vim_file
+      cp -r ./vim/$fldr/$vim_file $VIM_DIR/$fldr/$vim_file
     done
   fi
 done
@@ -48,7 +54,7 @@ done
 for plugin in ${vim_plugins[@]}
 do
   plugin_name=$( echo $plugin | sed -E 's;^.*/(.*).git$;\1;' )
-  plugin_dir=../.vim/bundle/$plugin_name
+  plugin_dir=$VIM_DIR/bundle/$plugin_name
 
   if [ ! -d $plugin_dir ]; then
     echo
