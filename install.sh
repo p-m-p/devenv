@@ -24,7 +24,7 @@ fi
 
 if [ ! -d ~/.vim ]; then
   echo 'Unable to locate ~/.vim directory for current user'
-  exit $?
+  exit 1
 fi
 
 # Setup vim
