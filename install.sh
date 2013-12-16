@@ -1,12 +1,10 @@
 #!/usr/bin/env bash
 
-if [ ! -n $HOME_DIR ]; then
-  HOME_DIR="~"
-fi
-
+[ -z "$HOME_DIR" ] && HOME_DIR=~
 VIM_DIR="$HOME_DIR/.vim"
 
 vim_plugins=(
+  "git@github.com:kien/ctrlp.vim.git"
   "git@github.com:tpope/vim-haml.git"
   "git@github.com:nono/vim-handlebars.git"
   "git@github.com:pangloss/vim-javascript.git"
