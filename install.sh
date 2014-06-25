@@ -12,6 +12,7 @@ vim_plugins=(
   "git@github.com:tpope/vim-fugitive.git"
   "git@github.com:bling/vim-airline.git"
   "git@github.com:wavded/vim-stylus.git"
+  "git@github.com:vim-ruby/vim-ruby.git"
 )
 
 # Copy config scripts
