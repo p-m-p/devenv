@@ -14,6 +14,7 @@ vim_plugins=(
   "git@github.com:wavded/vim-stylus.git"
   "git@github.com:vim-ruby/vim-ruby.git"
   "git@github.com:vim-scripts/VimClojure.git"
+  "git@github.com:plasticboy/vim-markdown.git"
 )
 
 # Copy config scripts
