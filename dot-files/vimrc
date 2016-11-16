@@ -6,6 +6,8 @@ set t_Co=257
 colorscheme bubblegum
 let g:airline_theme = "bubblegum"
 
+let g:vim_markdown_folding_disabled = 1
+
 set guifont=Monaco:h12
 set tabstop=2
 set shiftwidth=2
