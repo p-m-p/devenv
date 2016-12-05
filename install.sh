@@ -15,6 +15,7 @@ vim_plugins=(
   "git@github.com:vim-ruby/vim-ruby.git"
   "git@github.com:vim-scripts/VimClojure.git"
   "git@github.com:plasticboy/vim-markdown.git"
+  "git@github.com:leafgarland/typescript-vim.git"
 )
 
 # Copy config scripts
