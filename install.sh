@@ -11,6 +11,7 @@ vim_plugins=(
   "git@github.com:p-m-p/snipmate.vim.git"
   "git@github.com:tpope/vim-fugitive.git"
   "git@github.com:bling/vim-airline.git"
+  "git@github.com:vim-airline/vim-airline-themes.git"
   "git@github.com:wavded/vim-stylus.git"
   "git@github.com:vim-ruby/vim-ruby.git"
   "git@github.com:vim-scripts/VimClojure.git"
