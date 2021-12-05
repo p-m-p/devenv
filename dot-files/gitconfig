@@ -17,7 +17,7 @@
   untracked = cyan
 [user]
 	name = Phil Parsons
-	email = phil.m.parsons@gmail.com
+	email = p-m-p@users.noreply.github.com
 [core]
 	excludesfile = ~/.gitignore
 	editor = /usr/bin/vim
