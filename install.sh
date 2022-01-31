@@ -4,19 +4,14 @@
 VIM_DIR="$HOME_DIR/.vim"
 
 vim_plugins=(
-  "git@github.com:kien/ctrlp.vim.git"
-  "git@github.com:tpope/vim-haml.git"
-  "git@github.com:nono/vim-handlebars.git"
-  "git@github.com:pangloss/vim-javascript.git"
-  "git@github.com:p-m-p/snipmate.vim.git"
-  "git@github.com:tpope/vim-fugitive.git"
-  "git@github.com:bling/vim-airline.git"
-  "git@github.com:vim-airline/vim-airline-themes.git"
-  "git@github.com:wavded/vim-stylus.git"
-  "git@github.com:vim-ruby/vim-ruby.git"
-  "git@github.com:vim-scripts/VimClojure.git"
-  "git@github.com:plasticboy/vim-markdown.git"
-  "git@github.com:leafgarland/typescript-vim.git"
+  "https://github.com/kien/ctrlp.vim.git"
+  "https://github.com/pangloss/vim-javascript.git"
+  "https://github.com/tpope/vim-fugitive.git"
+  "https://github.com/bling/vim-airline.git"
+  "https://github.com/vim-airline/vim-airline-themes.git"
+  "https://github.com/vim-ruby/vim-ruby.git"
+  "https://github.com/plasticboy/vim-markdown.git"
+  "https://github.com/leafgarland/typescript-vim.git"
 )
 
 # Copy config scripts
