@@ -3,6 +3,8 @@
 *.profile
 *.project
 *.swp
+.idea
+*.iml
 
 # Logs and config
 #################
@@ -11,3 +13,9 @@
 *.swo
 .sass-cache
 .DS_Store
+
+# Language files
+################
+node_modules
+dist
+target

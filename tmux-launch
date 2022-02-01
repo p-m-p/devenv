@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+
 tmux_session=$1
 tmux has-session -t $tmux_session
 
@@ -9,16 +10,12 @@ then
     # Create a work session
     tmux new-session -s work -n editor -d
 
-    # Open into the geckoboard app and fire up Vim
-    tmux send-keys -t work 'cd ~/development/app' C-m
+    tmux send-keys -t work 'cd ~' C-m
     tmux send-keys -t work 'vim' C-m
+
     # split off a console under the editor
     tmux split-window -v -p 22 -t work
-    tmux send-keys -t work 'cd ~/development/app;clear' C-m
-    # split again and tail logs
-    tmux split-window -h -t work
-    tmux send-keys -t work 'tail -f /var/log/applications/*.log' C-m
-    tmux select-pane -t work:0.1
+    tmux send-keys -t work 'cd ~;clear' C-m
 
     # Select Vim ready to code
     tmux select-window -t work:0
