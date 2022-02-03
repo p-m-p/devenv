@@ -6,7 +6,8 @@
     email = p-m-p@users.noreply.github.com
     name = Phil Parsons
 [core]
-    autocrlf = true
+    eol = lf
+    autocrlf = false
     editor = /usr/bin/vim
     excludesfile = ~/.gitignore
 [alias]
