@@ -1,32 +1,20 @@
 [color]
-  branch = auto
-  diff = auto
-  status = auto
-[color "branch"]
-  current = yellow reverse
-  local = yellow
-  remote = green
-[color "diff"]
-  meta = yellow bold
-  frag = magenta bold
-  old = red bold
-  new = green bold
-[color "status"]
-  added = yellow
-  changed = magenta
-  untracked = cyan
+    branch = auto
+    diff = auto
+    status = auto
 [user]
-	name = Phil Parsons
-	email = p-m-p@users.noreply.github.com
+    email = p-m-p@users.noreply.github.com
+    name = Phil Parsons
 [core]
-	excludesfile = ~/.gitignore
-	editor = /usr/bin/vim
+    autocrlf = true
+    editor = /usr/bin/vim
+    excludesfile = ~/.gitignore
 [alias]
-  co = checkout
-  ci = commit
-  st = status
-  br = branch
-  pom = push origin master
-  hist = log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short
-  type = cat-file -t
-  dump = cat-file -p
+    br = branch
+    ci = commit
+    dump = cat-file -p
+    co = checkout
+    hist = log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short
+    pom = push origin master
+    st = status
+    type = cat-file -t
