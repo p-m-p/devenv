@@ -8,7 +8,7 @@
 [core]
     eol = lf
     autocrlf = false
-    editor = /usr/bin/vim
+    editor = nvim
     excludesfile = ~/.gitignore
 [alias]
     br = branch
@@ -19,3 +19,4 @@
     pom = push origin master
     st = status
     type = cat-file -t
+    lol = log --oneline
