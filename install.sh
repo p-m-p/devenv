@@ -16,8 +16,9 @@ if [ ! -d "$HOME_DIR/.tmux-themepack" ]; then
 fi
 
 if [ ! -d "$HOME_DIR/.config/nvim" ]; then
-  echo "Installing Neovim configs"
+  echo "Installing Neovim configs and bootstrapping"
   git clone https://github.com/p-m-p/nvim-config.git $HOME_DIR/.config/nvim
+  nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
 fi
 
 if [ ! -d "$HOME_DIR/.oh-my-zsh" ]; then
