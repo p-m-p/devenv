@@ -21,11 +21,6 @@ if [ ! -d "$HOME_DIR/.config/nvim" ]; then
   nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
 fi
 
-if [ ! -d "$HOME_DIR/.oh-my-zsh" ]; then
-  echo "Installing Oh My Zsh"
-  git clone --depth=1 https://github.com/ohmyzsh/ohmyzsh.git $HOME_DIR/.oh-my-zsh
-fi
-
 if [ ! -d "$HOME_DIR/.nvm" ]; then
   echo "Installing Node with nvm"
   git clone https://github.com/nvm-sh/nvm.git $HOME_DIR/.nvm
