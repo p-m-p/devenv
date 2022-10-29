@@ -10,9 +10,9 @@ do
   cp ./dot-files/$config $HOME_DIR/.$config
 done
 
-if [ ! -d "$HOME_DIR/.tmux-themepack" ]; then
-  echo "Installing TMUX theme"
-  git clone --depth=1 https://github.com/jimeh/tmux-themepack.git $HOME_DIR/.tmux-themepack
+if [ ! -d "$HOME_DIR/.tmux" ]; then
+  echo "Installing tmux plugin config"
+  git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 fi
 
 if [ ! -d "$HOME_DIR/.config/nvim" ]; then
