@@ -1,0 +1,29 @@
+[color]
+  branch = auto
+  diff = auto
+  status = auto
+[user]
+  email = p-m-p@users.noreply.github.com
+  name = Phil Parsons
+[core]
+  eol = lf
+  autocrlf = false
+  editor = nvim
+  excludesfile = ~/.gitignore
+[alias]
+  br = branch
+  ci = commit
+  dump = cat-file -p
+  co = checkout
+  hist = log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short
+  pom = push origin master
+  st = status
+  type = cat-file -t
+  lo = log --oneline
+[credential "https://github.com"]
+  username = p-m-p
+  preserve = true
+[credential]
+	helper = store
+[init]
+	defaultBranch = main

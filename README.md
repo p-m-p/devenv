@@ -1,11 +1,17 @@
-Config file setup
-===
+# Personal dev setup
 
-Required Software
+## OSX
 
-- [ZSH](https://www.zsh.org/)
-- [Starship](https://starship.rs/)
-- [tmux](https://github.com/tmux/tmux/wiki)
-- [Neovim](https://neovim.io/)
+Install command line tools `xcode-select --install`
 
-Run `install.sh` to copy dot files and install plugins.
+## Linux
+
+Install required software for [Homebrew on Linux](https://docs.brew.sh/Homebrew-on-Linux#requirements)
+
+### Install script
+
+Run `install.sh` to install and configure developer software
+
+### Setup script
+
+Run `setup.sh` to install and configure SDKs

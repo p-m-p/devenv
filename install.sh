@@ -1,28 +1,63 @@
-#!/usr/bin/env zsh
+#!/usr/bin/env bash
 
 set -e
 
-[ -z "$HOME_DIR" ] && HOME_DIR=~
+IS_OSX=false
+[[ $OSTYPE == 'darwin'* ]] && IS_OSX=true
 
-for config in $( ls ./dot-files )
-do
-  cp ./dot-files/$config $HOME_DIR/.$config
-  echo "Added $HOME_DIR/.$config"
-done
+if type brew &> /dev/null; then
+  brew update
+else
+  echo "Installing Homebrew"
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
-if [ ! -d "$HOME_DIR/.tmux" ]; then
-  echo "Installing tmux plugin config"
-  git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+  if [ "$IS_OSX" = false ]; then
+    eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+  fi
 fi
 
-if [ ! -d "$HOME_DIR/.config/nvim" ]; then
-  echo "Installing Neovim configs"
-  git clone https://github.com/p-m-p/nvim-config.git $HOME_DIR/.config/nvim
+if [ "$IS_OSX" = true ]; then
+  echo "Installing iTerm2"
+  . ./iterm2/install.sh
 fi
 
-if [ ! -d "$HOME_DIR/.nvm" ]; then
+if ! type starship &> /dev/null; then
+  echo "Installing Starship"
+  brew install starship
+fi
+
+if ! type tmux &> /dev/null; then
+  echo "Installing tmux"
+  brew install tmux
+  git clone https://github.com/tmux-plugins/tpm "$HOME/.tmux/plugins/tpm"
+fi
+
+if ! type nvim &> /dev/null; then
+  echo "Installing Neovim"
+  brew install neovim
+  git clone https://github.com/p-m-p/nvim-config.git "$HOME/.config/nvim"
+fi
+
+if [ ! -d "$HOME/.nvm" ]; then
   echo "Installing nvm"
-  git clone https://github.com/nvm-sh/nvm.git $HOME_DIR/.nvm
-  source $HOME_DIR/.nvm/nvm.sh && nvm install --lts
-  echo "lts/*" > $HOME_DIR/.nvmrc
+  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
 fi
+
+if ! type sdk &> /dev/null; then
+  echo "Installing SDKMAN"
+  brew tap sdkman/tap
+  brew install sdkman-cli
+fi
+
+for dotfile in ./dotfiles/*
+do
+  FILE_NAME=$(basename "$dotfile")
+  FILE_PATH="$HOME/.$FILE_NAME"
+
+  if [ -f "$FILE_PATH" ]; then
+    echo "Backing up $FILE_PATH to $FILE_PATH.bak"
+    mv "$FILE_PATH" "$FILE_PATH.bak"
+  fi
+
+   cp "$dotfile" "$FILE_PATH"
+done
