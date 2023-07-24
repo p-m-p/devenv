@@ -1,0 +1,24 @@
+{
+  "Profiles": [
+    {
+      "Name": "Catpuccin Mocha",
+      "Guid": "E108FC50-18B8-41FC-87F2-32E75FA882B9",
+      "Background Color": {
+        "Red Component": 0.094117647058823528,
+        "Color Space": "sRGB",
+        "Blue Component": 0.14509803921568629,
+        "Alpha Component": 1,
+        "Green Component": 0.090196078431372548
+      },
+      "Foreground Color": {
+        "Red Component": 0.80392156862745101,
+        "Color Space": "sRGB",
+        "Blue Component": 0.95686274509803926,
+        "Alpha Component": 1,
+        "Green Component": 0.83921568627450982
+      },
+      "Normal Font": "HackNF-Regular 14",
+      "Terminal Type": "xterm-256color"
+    }
+  ]
+}
