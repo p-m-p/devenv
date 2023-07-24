@@ -1,4 +1,4 @@
-# Personal dev setup
+# Personal development environnent
 
 ## OSX
 
@@ -7,6 +7,10 @@ Install command line tools `xcode-select --install`
 ## Linux
 
 Install required software for [Homebrew on Linux](https://docs.brew.sh/Homebrew-on-Linux#requirements)
+
+## Neovim
+
+Neovim is installed and setup from [my personal configuration](https://github.com/p-m-p/nvim-config)
 
 ### Install script
 
