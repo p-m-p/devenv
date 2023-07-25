@@ -1,7 +1,5 @@
 #!/usr/bin/env zsh
 
-set -e
-
 corepack enable pnpm
 SHELL=zsh pnpm setup
 source "$HOME/.zshrc"
