@@ -1,4 +1,4 @@
-# Personal development environnent
+# Personal development environment
 
 ## OSX
 
@@ -14,7 +14,7 @@ Neovim is installed and setup from [my personal configuration](https://github.co
 
 ### Install script
 
-Run `install.sh` to install and configure developer software
+Run `install.sh` to install and configure software
 
 ### Setup script
 

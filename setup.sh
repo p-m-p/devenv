@@ -1,8 +1,7 @@
 #!/usr/bin/env zsh
 
-source "$HOME/.zshrc"
+set -e
 
-nvm install --lts
 corepack enable pnpm
 SHELL=zsh pnpm setup
 source "$HOME/.zshrc"

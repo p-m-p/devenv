@@ -43,10 +43,21 @@ if [ ! -d "$HOME/.nvm" ]; then
   curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
 fi
 
-if ! type sdk &> /dev/null; then
+if [ ! -d "$(brew --prefix sdkman-cli)" ]; then
   echo "Installing SDKMAN"
   brew tap sdkman/tap
   brew install sdkman-cli
+fi
+
+if ! type podman &> /dev/null; then
+  echo "Installing Podman"
+  brew install podman podman-compose
+
+  if [ "$IS_OSX" = true ]; then
+    podman machine init
+    podman machine start
+    brew install --cask podman-desktop
+  fi
 fi
 
 for dotfile in ./dotfiles/*
@@ -55,9 +66,11 @@ do
   FILE_PATH="$HOME/.$FILE_NAME"
 
   if [ -f "$FILE_PATH" ]; then
-    echo "Backing up $FILE_PATH to $FILE_PATH.bak"
+    echo "$FILE_PATH exists: backing up to $FILE_PATH.bak"
     mv "$FILE_PATH" "$FILE_PATH.bak"
   fi
 
    cp "$dotfile" "$FILE_PATH"
 done
+
+echo "Install complete, now 'source ~/.zshrc' and run 'setup.sh'"

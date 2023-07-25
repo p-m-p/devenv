@@ -24,6 +24,6 @@
   username = p-m-p
   preserve = true
 [credential]
-	helper = store
+  helper = store
 [init]
-	defaultBranch = main
+  defaultBranch = main
