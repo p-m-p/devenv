@@ -1,7 +1,9 @@
 alias pc="podman-compose"
 alias docker="podman"
 
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+if [ -d "/home/linuxbrew" ]; then
+  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+fi
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
