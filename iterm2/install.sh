@@ -19,5 +19,5 @@ if [ ! -d "$AUTO_LAUNCH_DIR" ]; then
   mkdir -p "$AUTO_LAUNCH_DIR"
 fi
 
-cp "$SCRIPT_DIR/setprofile" "$AUTO_LAUNCH_DIR"
+cp "$SCRIPT_DIR/setprofile.py" "$AUTO_LAUNCH_DIR"
 
