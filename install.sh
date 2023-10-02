@@ -28,7 +28,7 @@ fi
 
 if ! type tmux &> /dev/null; then
   echo "Installing tmux"
-  brew install tmux
+  brew install tmux tmuxinator
   git clone https://github.com/tmux-plugins/tpm "$HOME/.tmux/plugins/tpm"
 fi
 

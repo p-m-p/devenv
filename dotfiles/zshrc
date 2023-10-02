@@ -1,5 +1,8 @@
 alias pc="podman-compose"
 alias docker="podman"
+alias mux="tmuxinator"
+
+export EDITOR="nvim"
 
 if [ -d "/home/linuxbrew" ]; then
   eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
