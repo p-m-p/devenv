@@ -5,9 +5,15 @@ set -e
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 AUTO_LAUNCH_DIR="$HOME/Library/Application\ Support/iTerm2/Scripts/AutoLaunch"
 DYNAMIC_PROFILES_DIR="$HOME/Library/Application\ Support/iTerm2/DynamicProfiles"
+ITERM_APP_DIR="/Applications/iTerm.app"
 
 brew tap homebrew/cask-fonts
-brew install --cask iterm2 font-hack-nerd-font
+brew install --cask font-hack-nerd-font
+
+if [ ! -d "$ITERM_APP_DIR" ]; then
+  echo "Installing iTerm2"
+  brew install --cask iterm2
+fi
 
 if [ ! -d "$DYNAMIC_PROFILES_DIR" ]; then
   mkdir -p "$DYNAMIC_PROFILES_DIR"

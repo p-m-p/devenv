@@ -17,7 +17,6 @@ else
 fi
 
 if [ "$IS_OSX" = true ]; then
-  echo "Installing iTerm2"
   . ./iterm2/install.sh
 fi
 
@@ -43,7 +42,7 @@ if [ ! -d "$HOME/.nvm" ]; then
   curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
 fi
 
-if [ ! -d "$(brew --prefix sdkman-cli)" ]; then
+if ! brew --prefix --installed sdkman-cli &> /dev/null; then
   echo "Installing SDKMAN"
   brew tap sdkman/tap
   brew install sdkman-cli
