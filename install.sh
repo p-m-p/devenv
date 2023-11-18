@@ -20,9 +20,9 @@ if [ "$IS_OSX" = true ]; then
   . ./iterm2/install.sh
 fi
 
-if ! type starship &> /dev/null; then
-  echo "Installing Starship"
-  brew install starship
+if ! type zplug &> /dev/null; then
+  echo "Installing ZPlug"
+  brew install zplug
 fi
 
 if ! type tmux &> /dev/null; then
@@ -35,11 +35,6 @@ if ! type nvim &> /dev/null; then
   echo "Installing Neovim"
   brew install neovim
   git clone https://github.com/p-m-p/nvim-config.git "$HOME/.config/nvim"
-fi
-
-if [ ! -d "$HOME/.nvm" ]; then
-  echo "Installing nvm"
-  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
 fi
 
 if ! brew --prefix --installed sdkman-cli &> /dev/null; then
