@@ -20,6 +20,11 @@ if [ "$IS_OSX" = true ]; then
   . ./iterm2/install.sh
 fi
 
+if ! type fzf &> /dev/null; then
+  echo "Installing fzf"
+  brew install fzf
+fi
+
 if ! type zplug &> /dev/null; then
   echo "Installing ZPlug"
   brew install zplug
