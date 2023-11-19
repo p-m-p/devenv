@@ -18,4 +18,4 @@ Run `install.sh` to install and configure software
 
 ### Setup script
 
-Run `setup.sh` to install and configure SDKs
+Run `setup.sh` to install and configure SDKs and `<prefix> I` in Tmux to install plugins

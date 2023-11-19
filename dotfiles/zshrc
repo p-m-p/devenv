@@ -18,7 +18,7 @@ zplug "catppuccin/zsh-syntax-highlighting", use:themes/catppuccin_mocha-zsh-synt
 zplug "jeffreytse/zsh-vi-mode"
 zplug "mafredri/zsh-async"
 zplug "sindresorhus/pure", use:pure.zsh, as:theme
-zplug "p-m-p/pure-catppuccin", use:theme.zsh
+zplug "p-m-p/pure-catppuccin", use:style/mocha.zsh, from:github, at:main
 zplug "lukechilds/zsh-nvm"
 
 if ! zplug check --verbose; then
