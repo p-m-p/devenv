@@ -9,7 +9,7 @@ if [ -d "/home/linuxbrew" ]; then
   eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 fi
 
-export ZPLUG_HOME=/usr/local/opt/zplug
+export ZPLUG_HOME=$(brew --prefix zplug)
 source $ZPLUG_HOME/init.zsh
 
 zplug "zsh-users/zsh-history-substring-search"
