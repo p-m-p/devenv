@@ -7,7 +7,6 @@ AUTO_LAUNCH_DIR="$HOME/Library/Application\ Support/iTerm2/Scripts/AutoLaunch"
 DYNAMIC_PROFILES_DIR="$HOME/Library/Application\ Support/iTerm2/DynamicProfiles"
 ITERM_APP_DIR="/Applications/iTerm.app"
 
-brew tap homebrew/cask-fonts
 brew install --cask font-hack-nerd-font
 
 if [ ! -d "$ITERM_APP_DIR" ]; then
