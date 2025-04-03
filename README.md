@@ -2,6 +2,10 @@
 
 Run `install.sh` to install and configure
 
+## ITerm2
+
+Install the Python runtime for the profile switch script
+
 ## Neovim
 
 Neovim is using [my personal configuration](https://github.com/p-m-p/nvim-config)
