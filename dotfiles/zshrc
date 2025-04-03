@@ -1,13 +1,11 @@
-alias pc="podman-compose"
 alias docker="podman"
 alias mux="tmuxinator"
+alias pc="podman-compose"
+
+export HOMEBREW_BUNDLE_FILE="$HOME/Brewfile"
 
 export EDITOR="nvim"
 export NVM_AUTO_USE=true
-
-if [ -d "/home/linuxbrew" ]; then
-  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-fi
 
 export ZPLUG_HOME=$(brew --prefix zplug)
 source $ZPLUG_HOME/init.zsh
@@ -32,13 +30,5 @@ zplug load
 
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
-
-export SDKMAN_DIR=$(brew --prefix sdkman-cli)/libexec
-[[ -s "${SDKMAN_DIR}/bin/sdkman-init.sh" ]] && source "${SDKMAN_DIR}/bin/sdkman-init.sh"
-
-# pnpm
-export PNPM_HOME="/Users/philparsons/Library/pnpm"
-export PATH="$PNPM_HOME:$PATH"
-# pnpm end
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
