@@ -35,19 +35,26 @@ else
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
 
-brew bundle --file=./Brewfile
-echo "📦 Copying brew bundle to $HOME/Brewfile"
-cp ./Brewfile "$HOME/Brewfile"
+BREW_FILE="$HOME/Brewfile"
+
+if [ ! -f "$BREW_FILE" ]; then
+  echo "📦 Copying brew bundle to $BREW_FILE"
+  cp ./Brewfile "$BREW_FILE"
+fi
+
+brew bundle --file="$BREW_FILE"
 
 
 # Configs
 # -------------------------------------------------------------------------------
-if ! type tmux &> /dev/null; then
-  git clone https://github.com/tmux-plugins/tpm "$HOME/.tmux/plugins/tpm"
+TPM_DIR="$HOME/.tmux/plugins/tpm"
+if [ ! -d "$TPM_DIR" ]; then
+  git clone https://github.com/tmux-plugins/tpm "$TPM_DIR"
 fi
 
-if ! type nvim &> /dev/null; then
-  git clone https://github.com/p-m-p/nvim-config.git "$HOME/.config/nvim"
+NVIM_CONFIG_DIR="$HOME/.config/nvim"
+if [ ! -d "$NVIM_CONFIG_DIR" ]; then
+  git clone https://github.com/p-m-p/nvim-config.git "$NVIM_CONFIG_DIR"
 fi
 
 

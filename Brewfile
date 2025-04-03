@@ -1,5 +1,3 @@
-cask_args appdir: '/Applications'
-
 cask 'font-hack-nerd-font'
 cask 'iterm2'
 cask 'podman-desktop'

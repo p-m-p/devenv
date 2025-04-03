@@ -4,7 +4,7 @@ Run `install.sh` to install and configure
 
 ## ITerm2
 
-Install the Python runtime for the profile switch script
+Install the Python runtime for the `setprofile.py` script
 
 ## Neovim
 
