@@ -15,7 +15,6 @@ brew 'neovim'
 brew 'tmux'
 brew 'tmuxinator'
 
-brew 'node'
 brew 'nvm'
 brew 'pnpm'
 
