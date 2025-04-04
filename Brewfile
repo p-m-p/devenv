@@ -5,11 +5,16 @@ cask 'google-chrome'
 cask '1password'
 
 brew 'fzf'
-brew 'zplug'
 brew 'ripgrep'
+brew 'zplug'
+
+brew 'neovim'
+brew 'codespell'
+
+brew 'jq'
+brew 'yamllint'
 
 brew 'lynx'
-brew 'neovim'
 brew 'tmux'
 brew 'tmuxinator'
 
@@ -18,6 +23,8 @@ brew 'pnpm'
 
 brew 'lua'
 brew 'luarocks'
+brew 'selene'
+brew 'stylua'
 
 brew 'java'
 brew 'gradle'
