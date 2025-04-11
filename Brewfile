@@ -10,6 +10,7 @@ brew 'zplug'
 
 brew 'neovim'
 brew 'codespell'
+brew 'vale'
 
 brew 'jq'
 brew 'yamllint'
