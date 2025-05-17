@@ -4,6 +4,7 @@ cask 'podman-desktop'
 cask 'google-chrome'
 cask '1password'
 
+brew "direnv"
 brew 'fzf'
 brew 'ripgrep'
 brew 'zplug'
