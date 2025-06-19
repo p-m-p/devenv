@@ -57,6 +57,11 @@ if [ ! -d "$NVIM_CONFIG_DIR" ]; then
   git clone https://github.com/p-m-p/nvim-config.git "$NVIM_CONFIG_DIR"
 fi
 
+VALE_DIR="$HOME/Library/Application\ Support/vale"
+if [ ! -d "$TPM_DIR" ]; then
+  cp -R ./vale "$VALE_DIR"
+fi
+
 
 # Update iTerm2 settings for Catppuccin theme and default profile
 # -------------------------------------------------------------------------------
