@@ -4,8 +4,9 @@ cask 'podman-desktop'
 cask 'google-chrome'
 cask '1password'
 
-brew 'podman-compose'
 brew 'gh'
+brew '1password-cli'
+brew 'podman-compose'
 
 brew 'direnv'
 brew 'fzf'
