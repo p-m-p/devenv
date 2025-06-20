@@ -37,4 +37,6 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 
+source "$HOME/.config/op/plugins.sh"
+
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
