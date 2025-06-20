@@ -5,6 +5,7 @@ cask 'google-chrome'
 cask '1password'
 
 brew podman-compose
+brew gh
 
 brew "direnv"
 brew 'fzf'
