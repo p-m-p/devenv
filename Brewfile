@@ -3,9 +3,9 @@ cask 'iterm2'
 cask 'podman-desktop'
 cask 'google-chrome'
 cask '1password'
+cask '1password-cli'
 
 brew 'gh'
-brew '1password-cli'
 brew 'podman-compose'
 
 brew 'direnv'
