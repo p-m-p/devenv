@@ -6,12 +6,18 @@ alias ls="eza"
 alias ll="eza -la"
 alias tree="eza --tree"
 
-export HOMEBREW_BUNDLE_FILE="$HOME/Brewfile"
-
 export EDITOR="nvim"
 export NVM_AUTO_USE=true
+export PATH="$HOME/.local/bin:$PATH"
 
-export ZPLUG_HOME=$(brew --prefix zplug)
+# Homebrew (macOS)
+if command -v brew &> /dev/null; then
+  export HOMEBREW_BUNDLE_FILE="$HOME/Brewfile"
+  export ZPLUG_HOME=$(brew --prefix zplug)
+else
+  export ZPLUG_HOME="$HOME/.zplug"
+fi
+
 source $ZPLUG_HOME/init.zsh
 
 zplug "zsh-users/zsh-history-substring-search"
@@ -36,13 +42,19 @@ zplug load
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
 
-export PNPM_HOME="$HOME/Library/pnpm"
+# pnpm
+if [[ "$OSTYPE" == "darwin"* ]]; then
+  export PNPM_HOME="$HOME/Library/pnpm"
+else
+  export PNPM_HOME="$HOME/.local/share/pnpm"
+fi
 case ":$PATH:" in
   *":$PNPM_HOME:"*) ;;
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 
-source "$HOME/.config/op/plugins.sh"
+# 1Password CLI plugins (macOS)
+[ -f "$HOME/.config/op/plugins.sh" ] && source "$HOME/.config/op/plugins.sh"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
