@@ -1,6 +1,10 @@
 alias docker="podman"
 alias mux="tmuxinator"
 alias pc="podman-compose"
+alias cat="bat"
+alias ls="eza"
+alias ll="eza -la"
+alias tree="eza --tree"
 
 export HOMEBREW_BUNDLE_FILE="$HOME/Brewfile"
 
@@ -11,6 +15,7 @@ export ZPLUG_HOME=$(brew --prefix zplug)
 source $ZPLUG_HOME/init.zsh
 
 zplug "zsh-users/zsh-history-substring-search"
+zplug "zsh-users/zsh-autosuggestions"
 zplug "zsh-users/zsh-syntax-highlighting", defer:2
 zplug "catppuccin/zsh-syntax-highlighting", use:themes/catppuccin_mocha-zsh-syntax-highlighting.zsh
 zplug "jeffreytse/zsh-vi-mode"
@@ -40,3 +45,6 @@ esac
 source "$HOME/.config/op/plugins.sh"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+eval "$(direnv hook zsh)"
+eval "$(zoxide init zsh)"
