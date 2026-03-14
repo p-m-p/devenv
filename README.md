@@ -1,13 +1,24 @@
 # devenv
 
-Personal macOS development environment setup. One script to bootstrap a fresh machine with all tools, configs, and themes.
+Personal development environment setup. One script to bootstrap a fresh machine with all tools, configs, and themes.
 
 ## Quick Start
+
+### macOS
 
 ```bash
 git clone https://github.com/p-m-p/devenv.git
 cd devenv
 ./install.sh
+```
+
+### Ubuntu
+
+```bash
+git clone https://github.com/p-m-p/devenv.git
+cd devenv
+./install-ubuntu.sh  # Install packages
+./install.sh         # Set up dotfiles and configs
 ```
 
 ## What's Included
@@ -84,7 +95,7 @@ ll     → eza -la
 tree   → eza --tree
 ```
 
-## iTerm2 Setup
+## iTerm2 Setup (macOS)
 
 After installation, enable the Python runtime in iTerm2 for the auto-profile script:
 
