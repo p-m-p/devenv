@@ -51,6 +51,7 @@ TPM_DIR="$HOME/.tmux/plugins/tpm"
 if [ ! -d "$TPM_DIR" ]; then
   git clone https://github.com/tmux-plugins/tpm "$TPM_DIR"
 fi
+"$TPM_DIR/bin/install_plugins"
 
 VIM_PLUG_FILE="${XDG_DATA_HOME:-$HOME/.local/share}/nvim/site/autoload/plug.vim"
 if [ ! -f "$VIM_PLUG_FILE" ]; then
