@@ -1,36 +1,57 @@
+# Fonts
 cask 'font-hack-nerd-font'
+
+# Applications
 cask 'iterm2'
 cask 'podman-desktop'
 cask 'google-chrome'
 cask '1password'
 cask '1password-cli'
 
-brew 'gh'
+# Containers
 brew 'podman-compose'
 
+# Git & GitHub
+brew 'gh'
+brew 'lazygit'
+
+# Shell & Navigation
+brew 'zplug'
 brew 'direnv'
 brew 'fzf'
+brew 'zoxide'
+
+# Modern CLI replacements
+brew 'bat'
+brew 'eza'
 brew 'ripgrep'
-brew 'zplug'
 
-brew 'neovim'
-brew 'codespell'
-brew 'vale'
-
-brew 'jq'
-brew 'yamllint'
-
-brew 'lynx'
+# Terminal Multiplexing
 brew 'tmux'
 brew 'tmuxinator'
+brew 'lynx'
 
+# Editors
+brew 'neovim'
+
+# Node.js
 brew 'nvm'
 brew 'pnpm'
 
+# Lua
 brew 'lua'
 brew 'luarocks'
 brew 'selene'
 brew 'stylua'
 
+# Java
 brew 'java'
 brew 'gradle'
+
+# Linting & Quality
+brew 'codespell'
+brew 'vale'
+brew 'yamllint'
+
+# Data Processing
+brew 'jq'
