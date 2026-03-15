@@ -48,6 +48,9 @@ brew 'stylua'
 brew 'java'
 brew 'gradle'
 
+# Go
+brew 'go'
+
 # Linting & Quality
 brew 'codespell'
 brew 'vale'
