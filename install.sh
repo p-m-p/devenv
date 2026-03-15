@@ -282,14 +282,27 @@ backup_dir "$VALE_DIR"
 cp -R ./vale "$VALE_DIR"
 
 # Bat config (Catppuccin theme)
-BAT_CONFIG_DIR="$(bat --config-dir 2>/dev/null || echo "$HOME/.config/bat")"
-echo "Setting up bat config..."
-backup_file "$BAT_CONFIG_DIR/config"
-backup_dir "$BAT_CONFIG_DIR/themes"
-mkdir -p "$BAT_CONFIG_DIR/themes"
-cp ./bat/config "$BAT_CONFIG_DIR/config"
-cp ./bat/themes/*.tmTheme "$BAT_CONFIG_DIR/themes/"
-bat cache --build
+# On Ubuntu, bat is installed as batcat - use symlink or batcat directly
+if command -v bat &> /dev/null; then
+  BAT_CMD="bat"
+elif [ -x "$HOME/.local/bin/bat" ]; then
+  BAT_CMD="$HOME/.local/bin/bat"
+elif command -v batcat &> /dev/null; then
+  BAT_CMD="batcat"
+else
+  BAT_CMD=""
+fi
+
+if [ -n "$BAT_CMD" ]; then
+  BAT_CONFIG_DIR="$($BAT_CMD --config-dir 2>/dev/null || echo "$HOME/.config/bat")"
+  echo "Setting up bat config..."
+  backup_file "$BAT_CONFIG_DIR/config"
+  backup_dir "$BAT_CONFIG_DIR/themes"
+  mkdir -p "$BAT_CONFIG_DIR/themes"
+  cp ./bat/config "$BAT_CONFIG_DIR/config"
+  cp ./bat/themes/*.tmTheme "$BAT_CONFIG_DIR/themes/"
+  $BAT_CMD cache --build
+fi
 
 # macOS-specific: iTerm2 setup
 # -------------------------------------------------------------------------------
