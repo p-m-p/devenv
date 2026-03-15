@@ -211,9 +211,10 @@ elif [ "$PLATFORM" = "debian" ]; then
   # Kiro CLI config
   if [ ! -d "$HOME/.kiro" ]; then
     echo "Setting up Kiro config..."
-    mkdir -p "$HOME/.kiro/steering" "$HOME/.kiro/settings"
+    mkdir -p "$HOME/.kiro/steering" "$HOME/.kiro/settings" "$HOME/.kiro/agents"
     cp ./kiro/steering/*.md "$HOME/.kiro/steering/"
     cp ./kiro/settings/*.json "$HOME/.kiro/settings/"
+    cp ./kiro/agents/*.json "$HOME/.kiro/agents/"
   fi
 
   # Set zsh as default shell

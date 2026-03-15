@@ -1,0 +1,17 @@
+{
+  "name": "default",
+  "description": "Default agent with all tools allowed",
+  "tools": ["*"],
+  "allowedTools": [
+    "read",
+    "write",
+    "shell",
+    "aws",
+    "@*"
+  ],
+  "toolsSettings": {
+    "shell": {
+      "autoAllowReadonly": true
+    }
+  }
+}
