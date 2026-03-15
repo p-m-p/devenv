@@ -95,6 +95,24 @@ ll     → eza -la
 tree   → eza --tree
 ```
 
+## AI Assistants
+
+Platform-specific AI coding assistant configurations are installed automatically.
+
+### Claude Code (macOS)
+
+Installs to `~/.claude/`:
+- **settings.json** - permissions for dev tools, extended thinking enabled
+- **CLAUDE.md** - steering with tech stack and conventions
+
+### Kiro CLI (Ubuntu)
+
+Installs to `~/.kiro/`:
+- **steering/** - tech stack, conventions
+- **settings/** - bat as diff tool, LSP configs
+- **agents/** - default agent with all tools allowed
+- **MCP servers** - GitHub, Chrome DevTools
+
 ## iTerm2 Setup (macOS)
 
 After installation, enable the Python runtime in iTerm2 for the auto-profile script:
