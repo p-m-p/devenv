@@ -80,6 +80,7 @@ if [ "$PLATFORM" = "macos" ]; then
   fi
   cp ./claude-code/settings.json "$HOME/.claude/settings.json"
   cp ./claude-code/CLAUDE.md "$HOME/.claude/CLAUDE.md"
+  cp ./claude-code/mcp.json "$HOME/.claude.json"
 
 elif [ "$PLATFORM" = "debian" ]; then
   echo "Installing packages via apt..."
