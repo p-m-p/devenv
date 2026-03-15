@@ -110,7 +110,8 @@ elif [ "$PLATFORM" = "debian" ]; then
     default-jdk \
     gradle \
     python3-pip \
-    ruby-full
+    ruby-full \
+    golang-go
 
   # Linting & Quality
   sudo apt install -y \
@@ -132,64 +133,33 @@ elif [ "$PLATFORM" = "debian" ]; then
     sudo apt install -y gh
   fi
 
-  # Neovim (latest stable)
+  # Rust (needed for cargo installs)
+  if ! command -v cargo &> /dev/null; then
+    echo "Installing Rust..."
+    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+    source "$HOME/.cargo/env"
+  fi
+
+  # Rust tools via cargo
+  echo "Installing Rust tools via cargo..."
+  command -v eza &> /dev/null || cargo install eza
+  command -v zoxide &> /dev/null || cargo install zoxide
+  command -v selene &> /dev/null || cargo install selene
+  command -v stylua &> /dev/null || cargo install stylua
+  command -v bob &> /dev/null || cargo install bob-nvim
+
+  # Neovim (via bob for latest stable)
   if ! command -v nvim &> /dev/null; then
     echo "Installing Neovim..."
-    sudo add-apt-repository -y ppa:neovim-ppa/stable
-    sudo apt update
-    sudo apt install -y neovim
+    bob install stable
+    bob use stable
   fi
 
-  # eza (modern ls)
-  if ! command -v eza &> /dev/null; then
-    echo "Installing eza..."
-    sudo mkdir -p /etc/apt/keyrings
-    wget -qO- https://raw.githubusercontent.com/eza-community/eza/main/deb.asc | sudo gpg --dearmor -o /etc/apt/keyrings/gierens.gpg
-    echo "deb [signed-by=/etc/apt/keyrings/gierens.gpg] http://deb.gierens.de stable main" | sudo tee /etc/apt/sources.list.d/gierens.list
-    sudo chmod 644 /etc/apt/keyrings/gierens.gpg /etc/apt/sources.list.d/gierens.list
-    sudo apt update
-    sudo apt install -y eza
-  fi
-
-  # zoxide
-  if ! command -v zoxide &> /dev/null; then
-    echo "Installing zoxide..."
-    curl -sSfL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | sh
-  fi
-
-  # lazygit
-  if ! command -v lazygit &> /dev/null; then
-    echo "Installing lazygit..."
-    LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | grep -Po '"tag_name": "v\K[^"]*')
-    curl -Lo lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/latest/download/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz"
-    tar xf lazygit.tar.gz lazygit
-    sudo install lazygit /usr/local/bin
-    rm lazygit lazygit.tar.gz
-  fi
-
-  # vale
-  if ! command -v vale &> /dev/null; then
-    echo "Installing vale..."
-    curl -sfL https://install.goreleaser.com/github.com/ValeLint/vale.sh | sh -s -- -b ~/.local/bin
-  fi
-
-  # selene (Lua linter)
-  if ! command -v selene &> /dev/null; then
-    echo "Installing selene..."
-    SELENE_VERSION=$(curl -s "https://api.github.com/repos/Kampfkarren/selene/releases/latest" | grep -Po '"tag_name": "\K[^"]*')
-    curl -Lo selene.zip "https://github.com/Kampfkarren/selene/releases/latest/download/selene-${SELENE_VERSION}-linux.zip"
-    unzip -o selene.zip -d ~/.local/bin
-    rm selene.zip
-  fi
-
-  # stylua (Lua formatter)
-  if ! command -v stylua &> /dev/null; then
-    echo "Installing stylua..."
-    STYLUA_VERSION=$(curl -s "https://api.github.com/repos/JohnnyMorganz/StyLua/releases/latest" | grep -Po '"tag_name": "v\K[^"]*')
-    curl -Lo stylua.zip "https://github.com/JohnnyMorganz/StyLua/releases/latest/download/stylua-linux-x86_64.zip"
-    unzip -o stylua.zip -d ~/.local/bin
-    rm stylua.zip
-  fi
+  # Go tools via go install
+  echo "Installing Go tools..."
+  export PATH="$PATH:$HOME/go/bin"
+  command -v lazygit &> /dev/null || go install github.com/jesseduffield/lazygit@latest
+  command -v vale &> /dev/null || go install github.com/errata-ai/vale/v3/cmd/vale@latest
 
   # nvm (Node Version Manager)
   if [ ! -d "$HOME/.nvm" ]; then
@@ -206,7 +176,7 @@ elif [ "$PLATFORM" = "debian" ]; then
   # zplug
   if [ ! -d "$HOME/.zplug" ]; then
     echo "Installing zplug..."
-    curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
+    git clone https://github.com/zplug/zplug "$HOME/.zplug"
   fi
 
   # tmuxinator
@@ -226,15 +196,10 @@ elif [ "$PLATFORM" = "debian" ]; then
     fc-cache -fv
   fi
 
-  # Ensure ~/.local/bin is in PATH
-  if [[ ":$PATH:" != *":$HOME/.local/bin:"* ]]; then
-    echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.zshrc
-  fi
-
   # Set zsh as default shell
   if [ "$SHELL" != "$(which zsh)" ]; then
     echo "Setting zsh as default shell..."
-    chsh -s "$(which zsh)"
+    sudo chsh -s "$(which zsh)" "$(whoami)"
   fi
 fi
 
@@ -305,11 +270,8 @@ echo "Installation complete!"
 echo ""
 echo "Next steps:"
 echo "  1. Restart your terminal to load the new shell config"
-echo "  2. Run 'zplug install' if prompted to install zsh plugins"
+echo "  2. Press 'y' when prompted to install zsh plugins"
 echo "  3. Open Neovim and run ':PlugInstall' for editor plugins"
-if [ "$PLATFORM" = "debian" ]; then
-  echo "  4. Install Node.js: nvm install --lts"
-fi
 if [ "$PLATFORM" = "macos" ]; then
   echo "  4. Enable iTerm2 Python runtime: iTerm2 > Scripts > Manage > Install Python Runtime"
 fi
