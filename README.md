@@ -4,22 +4,13 @@ Personal development environment setup. One script to bootstrap a fresh machine 
 
 ## Quick Start
 
-### macOS
-
 ```bash
 git clone https://github.com/p-m-p/devenv.git
 cd devenv
 ./install.sh
 ```
 
-### Ubuntu
-
-```bash
-git clone https://github.com/p-m-p/devenv.git
-cd devenv
-./install-ubuntu.sh  # Install packages
-./install.sh         # Set up dotfiles and configs
-```
+The installer automatically detects your platform (macOS or Debian/Ubuntu) and runs the appropriate setup.
 
 ## What's Included
 
