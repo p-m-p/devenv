@@ -202,6 +202,14 @@ elif [ "$PLATFORM" = "debian" ]; then
     fc-cache -fv
   fi
 
+  # Kiro CLI config
+  if [ ! -d "$HOME/.kiro" ]; then
+    echo "Setting up Kiro config..."
+    mkdir -p "$HOME/.kiro/steering" "$HOME/.kiro/settings"
+    cp ./kiro/steering/*.md "$HOME/.kiro/steering/"
+    cp ./kiro/settings/*.json "$HOME/.kiro/settings/"
+  fi
+
   # Set zsh as default shell
   if [ "$SHELL" != "$(which zsh)" ]; then
     echo "Setting zsh as default shell..."
