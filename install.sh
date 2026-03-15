@@ -109,7 +109,8 @@ elif [ "$PLATFORM" = "debian" ]; then
     luarocks \
     default-jdk \
     gradle \
-    python3-pip
+    python3-pip \
+    ruby-full
 
   # Linting & Quality
   sudo apt install -y \
