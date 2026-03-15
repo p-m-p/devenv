@@ -73,6 +73,14 @@ if [ "$PLATFORM" = "macos" ]; then
 
   brew bundle --file="$BREW_FILE"
 
+  # Claude Code config
+  if [ ! -d "$HOME/.claude" ]; then
+    echo "Setting up Claude Code config..."
+    mkdir -p "$HOME/.claude"
+  fi
+  cp ./claude-code/settings.json "$HOME/.claude/settings.json"
+  cp ./claude-code/CLAUDE.md "$HOME/.claude/CLAUDE.md"
+
 elif [ "$PLATFORM" = "debian" ]; then
   echo "Installing packages via apt..."
 
