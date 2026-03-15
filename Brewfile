@@ -50,6 +50,7 @@ brew 'gradle'
 
 # Go
 brew 'go'
+brew 'gopls'
 
 # Linting & Quality
 brew 'codespell'
