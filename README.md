@@ -12,6 +12,13 @@ cd devenv
 
 The installer automatically detects your platform (macOS or Debian/Ubuntu) and runs the appropriate setup.
 
+### Testing with Docker
+
+```bash
+podman-compose build
+podman-compose run ubuntu
+```
+
 ## What's Included
 
 ### Applications
@@ -42,6 +49,8 @@ The installer automatically detects your platform (macOS or Debian/Ubuntu) and r
 |------|-------------|
 | Neovim | Editor ([my config](https://github.com/p-m-p/nvim-config)) |
 | Node.js | Via nvm with pnpm |
+| Go | For lazygit, vale |
+| Rust | For eza, zoxide, selene, stylua |
 | Java + Gradle | JDK and build tool |
 | Lua | With luarocks, selene, stylua |
 | Podman | Container runtime (aliased to `docker`) |
@@ -97,5 +106,5 @@ This automatically sets Catppuccin Mocha as the default profile.
 ## Post-Install
 
 1. Restart your terminal to load the new shell config
-2. Run `zplug install` if prompted to install zsh plugins
-3. Open Neovim and run `:PlugInstall` for editor plugins
+2. Zsh plugins install automatically on first prompt
+3. Neovim plugins install automatically on first launch

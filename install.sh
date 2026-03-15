@@ -52,13 +52,13 @@ echo ""
 # -------------------------------------------------------------------------------
 if [ "$PLATFORM" = "macos" ]; then
   # Xcode tools (git, gcc)
-  if ! type git &> /dev/null; then
+  if ! command -v git &> /dev/null; then
     echo "Installing Xcode developer tools..."
     xcode-select --install
   fi
 
   # Homebrew setup and bundle installation
-  if type brew &> /dev/null; then
+  if command -v brew &> /dev/null; then
     brew update
   else
     echo "Installing Homebrew..."
@@ -155,6 +155,7 @@ elif [ "$PLATFORM" = "debian" ]; then
   command -v bob &> /dev/null || cargo install bob-nvim
 
   # Neovim (via bob for latest stable)
+  export PATH="$HOME/.local/share/bob/nvim-bin:$PATH"
   if ! command -v nvim &> /dev/null; then
     echo "Installing Neovim..."
     bob install stable
@@ -162,8 +163,7 @@ elif [ "$PLATFORM" = "debian" ]; then
   fi
 
   # Go tools via go install
-  echo "Installing Go tools..."
-  export PATH="$PATH:$HOME/go/bin"
+  export PATH="$HOME/go/bin:$PATH"
   command -v lazygit &> /dev/null || go install github.com/jesseduffield/lazygit@latest
   command -v vale &> /dev/null || go install github.com/errata-ai/vale/v3/cmd/vale@latest
 
