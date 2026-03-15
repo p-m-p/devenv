@@ -29,13 +29,19 @@ echo ""
 # Dotfiles
 # -------------------------------------------------------------------------------
 echo "Setting up dotfiles..."
+BACKUP_DIR=""
+
 for dotfile in ./dotfiles/*; do
   FILE_NAME=$(basename "$dotfile")
   FILE_PATH="$HOME/.$FILE_NAME"
 
   if [ -f "$FILE_PATH" ]; then
-    echo "  $FILE_PATH exists: backing up to $FILE_PATH.bak"
-    mv "$FILE_PATH" "$FILE_PATH.bak"
+    if [ -z "$BACKUP_DIR" ]; then
+      BACKUP_DIR="./backups/$(date +%Y-%m-%d_%H-%M-%S)"
+      mkdir -p "$BACKUP_DIR"
+      echo "  Backing up existing dotfiles to $BACKUP_DIR"
+    fi
+    mv "$FILE_PATH" "$BACKUP_DIR/.$FILE_NAME"
   fi
 
   cp "$dotfile" "$FILE_PATH"
