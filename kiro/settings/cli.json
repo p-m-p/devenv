@@ -1,3 +1,4 @@
 {
-  "chat.diffTool": "bat"
+  "chat.diffTool": "bat",
+  "chat.defaultAgent": "default"
 }

@@ -224,7 +224,6 @@ elif [ "$PLATFORM" = "debian" ]; then
     cp ./kiro/steering/*.md "$HOME/.kiro/steering/"
     cp ./kiro/settings/*.json "$HOME/.kiro/settings/"
     cp ./kiro/agents/*.json "$HOME/.kiro/agents/"
-    kiro-cli agent set-default default
   fi
 
   # Set zsh as default shell
