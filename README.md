@@ -38,7 +38,6 @@ podman-compose run ubuntu
 | fzf | - | Fuzzy finder |
 | zoxide | cd | Learns your directory habits |
 | delta | diff | Better git diffs with syntax highlighting |
-| glow | - | Render markdown in terminal |
 | jq | - | JSON processor |
 | direnv | - | Directory-specific env vars |
 
@@ -47,7 +46,7 @@ podman-compose run ubuntu
 | Tool | Notes |
 |------|-------|
 | Node.js | Via nvm, with pnpm |
-| Go | For vale, glow |
+| Go | For vale |
 | Rust | For eza, zoxide, selene, stylua |
 | Java + Gradle | JDK and build tool |
 | Lua | With luarocks |

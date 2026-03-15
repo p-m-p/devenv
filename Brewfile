@@ -25,7 +25,6 @@ brew 'zoxide'
 brew 'bat'
 brew 'eza'
 brew 'ripgrep'
-brew 'glow'         # Render markdown in terminal
 
 # Terminal Multiplexing
 brew 'tmux'

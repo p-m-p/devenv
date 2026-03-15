@@ -35,7 +35,6 @@ Fastify
 Figma
 FOUC
 GCP
-glow
 Gradle
 GraphQL
 gRPC

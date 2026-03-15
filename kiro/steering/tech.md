@@ -18,7 +18,6 @@
 - `zoxide` replaces cd
 - `ripgrep` for search
 - `delta` for git diffs
-- `glow` for rendering markdown
 - `fzf` for fuzzy finding
 
 ## Containers

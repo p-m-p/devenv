@@ -9,13 +9,6 @@ alias pc="podman-compose"
 # Only alias if commands exist (bat is batcat on Ubuntu, symlinked to ~/.local/bin/bat)
 command -v bat &> /dev/null && alias cat="bat"
 command -v eza &> /dev/null && alias ls="eza" && alias ll="eza -la" && alias tree="eza --tree"
-if command -v glow &> /dev/null; then
-  if [[ "$OSTYPE" == "darwin"* ]]; then
-    alias glow="glow -s ~/Library/Preferences/glow/catppuccin-mocha.json"
-  else
-    alias glow="glow -s ~/.config/glow/catppuccin-mocha.json"
-  fi
-fi
 
 # Platform-specific setup
 if command -v brew &> /dev/null; then

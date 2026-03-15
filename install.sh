@@ -189,7 +189,6 @@ elif [ "$PLATFORM" = "debian" ]; then
   # Go tools via go install
   export PATH="$HOME/go/bin:$PATH"
   command -v vale &> /dev/null || go install github.com/errata-ai/vale/v3/cmd/vale@latest
-  command -v glow &> /dev/null || go install github.com/charmbracelet/glow@latest
 
   # Delta (better git diffs)
   if ! command -v delta &> /dev/null; then
@@ -312,17 +311,6 @@ if [ -n "$BAT_CMD" ]; then
   cp ./bat/themes/*.tmTheme "$BAT_CONFIG_DIR/themes/"
   $BAT_CMD cache --build
 fi
-
-# Glow theme (Catppuccin - config file doesn't work reliably, using alias instead)
-if [ "$PLATFORM" = "macos" ]; then
-  GLOW_CONFIG_DIR="$HOME/Library/Preferences/glow"
-else
-  GLOW_CONFIG_DIR="$HOME/.config/glow"
-fi
-echo "Setting up glow theme..."
-backup_file "$GLOW_CONFIG_DIR/catppuccin-mocha.json"
-mkdir -p "$GLOW_CONFIG_DIR"
-cp ./glow/catppuccin-mocha.json "$GLOW_CONFIG_DIR/"
 
 # macOS-specific: iTerm2 setup
 # -------------------------------------------------------------------------------
