@@ -6,12 +6,18 @@
     "read",
     "write",
     "shell",
+    "grep",
+    "glob",
     "aws",
     "@*"
   ],
   "toolsSettings": {
     "shell": {
       "autoAllowReadonly": true
+    },
+    "subagent": {
+      "availableAgents": ["*"],
+      "trustedAgents": ["*"]
     }
   }
 }
