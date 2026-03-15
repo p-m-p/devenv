@@ -262,7 +262,6 @@ echo "Installation complete!"
 echo ""
 echo "Next steps:"
 echo "  1. Restart your terminal to load the new shell config"
-echo "  2. Press 'y' when prompted to install zsh plugins"
 if [ "$PLATFORM" = "macos" ]; then
-  echo "  3. Enable iTerm2 Python runtime: iTerm2 > Scripts > Manage > Install Python Runtime"
+  echo "  2. Enable iTerm2 Python runtime: iTerm2 > Scripts > Manage > Install Python Runtime"
 fi
