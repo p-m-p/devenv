@@ -313,6 +313,15 @@ if [ -n "$BAT_CMD" ]; then
   $BAT_CMD cache --build
 fi
 
+# Glow config (Catppuccin theme)
+GLOW_CONFIG_DIR="$HOME/.config/glow"
+echo "Setting up glow config..."
+backup_file "$GLOW_CONFIG_DIR/glow.yml"
+backup_file "$GLOW_CONFIG_DIR/catppuccin-mocha.json"
+mkdir -p "$GLOW_CONFIG_DIR"
+cp ./glow/glow.yml "$GLOW_CONFIG_DIR/"
+cp ./glow/catppuccin-mocha.json "$GLOW_CONFIG_DIR/"
+
 # macOS-specific: iTerm2 setup
 # -------------------------------------------------------------------------------
 if [ "$PLATFORM" = "macos" ]; then
