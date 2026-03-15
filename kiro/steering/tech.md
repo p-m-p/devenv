@@ -13,11 +13,12 @@
 - Zsh with zplug
 
 ## CLI Replacements
-- `bat` instead of cat
+- `bat` instead of cat (with Catppuccin theme)
 - `eza` instead of ls
 - `zoxide` replaces cd
 - `ripgrep` for search
-- `lazygit` for git TUI
+- `delta` for git diffs
+- `glow` for rendering markdown
 - `fzf` for fuzzy finding
 
 ## Containers

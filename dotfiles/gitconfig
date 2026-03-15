@@ -10,6 +10,17 @@
   autocrlf = false
   editor = nvim
   excludesfile = ~/.gitignore
+  pager = delta
+[interactive]
+  diffFilter = delta --color-only
+[delta]
+  navigate = true
+  dark = true
+  syntax-theme = Catppuccin Mocha
+[merge]
+  conflictstyle = diff3
+[diff]
+  colorMoved = default
 [alias]
   br = branch
   ci = commit

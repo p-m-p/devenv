@@ -188,8 +188,17 @@ elif [ "$PLATFORM" = "debian" ]; then
 
   # Go tools via go install
   export PATH="$HOME/go/bin:$PATH"
-  command -v lazygit &> /dev/null || go install github.com/jesseduffield/lazygit@latest
   command -v vale &> /dev/null || go install github.com/errata-ai/vale/v3/cmd/vale@latest
+  command -v glow &> /dev/null || go install github.com/charmbracelet/glow@latest
+
+  # Delta (better git diffs)
+  if ! command -v delta &> /dev/null; then
+    echo "Installing delta..."
+    DELTA_VERSION="0.18.2"
+    curl -Lo /tmp/delta.deb "https://github.com/dandavison/delta/releases/download/${DELTA_VERSION}/git-delta_${DELTA_VERSION}_amd64.deb"
+    sudo dpkg -i /tmp/delta.deb
+    rm /tmp/delta.deb
+  fi
 
   # nvm (Node Version Manager)
   if [ ! -d "$HOME/.nvm" ]; then

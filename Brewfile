@@ -13,7 +13,7 @@ brew 'podman-compose'
 
 # Git & GitHub
 brew 'gh'
-brew 'lazygit'
+brew 'delta'        # Better git diffs with syntax highlighting
 
 # Shell & Navigation
 brew 'zplug'
@@ -25,6 +25,7 @@ brew 'zoxide'
 brew 'bat'
 brew 'eza'
 brew 'ripgrep'
+brew 'glow'         # Render markdown in terminal
 
 # Terminal Multiplexing
 brew 'tmux'

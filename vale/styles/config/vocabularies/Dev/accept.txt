@@ -17,6 +17,7 @@ CSRF
 CSS
 CustomEvent
 Deno
+delta
 dev
 devenv
 direnv
@@ -34,6 +35,7 @@ Fastify
 Figma
 FOUC
 GCP
+glow
 Gradle
 GraphQL
 gRPC

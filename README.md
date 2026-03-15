@@ -37,7 +37,8 @@ podman-compose run ubuntu
 | ripgrep | grep | Fast text search |
 | fzf | - | Fuzzy finder |
 | zoxide | cd | Learns your directory habits |
-| lazygit | - | Git terminal UI |
+| delta | diff | Better git diffs with syntax highlighting |
+| glow | - | Render markdown in terminal |
 | jq | - | JSON processor |
 | direnv | - | Directory-specific env vars |
 
@@ -46,7 +47,7 @@ podman-compose run ubuntu
 | Tool | Notes |
 |------|-------|
 | Node.js | Via nvm, with pnpm |
-| Go | For lazygit, vale |
+| Go | For vale, glow |
 | Rust | For eza, zoxide, selene, stylua |
 | Java + Gradle | JDK and build tool |
 | Lua | With luarocks |
