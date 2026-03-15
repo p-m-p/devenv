@@ -1,0 +1,49 @@
+{
+  "servers": {
+    "typescript": {
+      "name": "typescript-language-server",
+      "install": "npm install -g typescript-language-server typescript",
+      "config": ["tsconfig.json", "jsconfig.json"]
+    },
+    "lua": {
+      "name": "lua-language-server",
+      "linter": "selene",
+      "formatter": "stylua",
+      "config": [".luarc.json", "selene.toml", "stylua.toml"]
+    },
+    "go": {
+      "name": "gopls",
+      "install": "go install golang.org/x/tools/gopls@latest",
+      "formatter": "gofmt"
+    },
+    "python": {
+      "name": "pyright",
+      "install": "npm install -g pyright",
+      "formatter": "ruff",
+      "linter": "ruff"
+    },
+    "ruby": {
+      "name": "solargraph",
+      "install": "gem install solargraph",
+      "config": [".solargraph.yml"]
+    },
+    "java": {
+      "name": "jdtls",
+      "build": "gradle",
+      "config": ["build.gradle", "settings.gradle"]
+    },
+    "json": {
+      "name": "vscode-json-languageserver",
+      "install": "npm install -g vscode-langservers-extracted"
+    },
+    "yaml": {
+      "name": "yaml-language-server",
+      "install": "npm install -g yaml-language-server"
+    },
+    "bash": {
+      "name": "bash-language-server",
+      "install": "npm install -g bash-language-server",
+      "linter": "shellcheck"
+    }
+  }
+}
