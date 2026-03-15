@@ -202,6 +202,12 @@ elif [ "$PLATFORM" = "debian" ]; then
     fc-cache -fv
   fi
 
+  # Kiro CLI
+  if ! command -v kiro &> /dev/null; then
+    echo "Installing Kiro CLI..."
+    curl -fsSL https://cli.kiro.dev/install | bash
+  fi
+
   # Kiro CLI config
   if [ ! -d "$HOME/.kiro" ]; then
     echo "Setting up Kiro config..."
