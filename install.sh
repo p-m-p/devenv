@@ -211,9 +211,10 @@ elif [ "$PLATFORM" = "debian" ]; then
   fi
 
   # Kiro CLI
-  if ! command -v kiro &> /dev/null; then
+  if ! command -v kiro-cli &> /dev/null; then
     echo "Installing Kiro CLI..."
     curl -fsSL https://cli.kiro.dev/install | bash
+    export PATH="$HOME/.local/bin:$PATH"
   fi
 
   # Kiro CLI config
