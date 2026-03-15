@@ -26,24 +26,40 @@ esac
 echo "Detected platform: $PLATFORM"
 echo ""
 
-# Dotfiles
-# -------------------------------------------------------------------------------
-echo "Setting up dotfiles..."
+# Backup directory for this run
 BACKUP_DIR=""
 
-for dotfile in ./dotfiles/*; do
-  FILE_NAME=$(basename "$dotfile")
-  FILE_PATH="$HOME/.$FILE_NAME"
-
-  if [ -f "$FILE_PATH" ]; then
+backup_file() {
+  local file="$1"
+  if [ -f "$file" ]; then
     if [ -z "$BACKUP_DIR" ]; then
       BACKUP_DIR="./backups/$(date +%Y-%m-%d_%H-%M-%S)"
       mkdir -p "$BACKUP_DIR"
-      echo "  Backing up existing dotfiles to $BACKUP_DIR"
+      echo "  Backing up existing files to $BACKUP_DIR"
     fi
-    mv "$FILE_PATH" "$BACKUP_DIR/.$FILE_NAME"
+    cp "$file" "$BACKUP_DIR/$(basename "$file")"
   fi
+}
 
+backup_dir() {
+  local dir="$1"
+  if [ -d "$dir" ]; then
+    if [ -z "$BACKUP_DIR" ]; then
+      BACKUP_DIR="./backups/$(date +%Y-%m-%d_%H-%M-%S)"
+      mkdir -p "$BACKUP_DIR"
+      echo "  Backing up existing files to $BACKUP_DIR"
+    fi
+    cp -R "$dir" "$BACKUP_DIR/"
+  fi
+}
+
+# Dotfiles
+# -------------------------------------------------------------------------------
+echo "Setting up dotfiles..."
+for dotfile in ./dotfiles/*; do
+  FILE_NAME=$(basename "$dotfile")
+  FILE_PATH="$HOME/.$FILE_NAME"
+  backup_file "$FILE_PATH"
   cp "$dotfile" "$FILE_PATH"
 done
 echo ""
@@ -65,19 +81,18 @@ if [ "$PLATFORM" = "macos" ]; then
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
   fi
 
-  BREW_FILE="$HOME/Brewfile"
-  if [ ! -f "$BREW_FILE" ]; then
-    echo "Copying brew bundle to $BREW_FILE"
-    cp ./Brewfile "$BREW_FILE"
-  fi
-
-  brew bundle --file="$BREW_FILE"
+  # Brewfile
+  echo "Syncing Brewfile..."
+  backup_file "$HOME/Brewfile"
+  cp ./Brewfile "$HOME/Brewfile"
+  brew bundle --file="$HOME/Brewfile"
 
   # Claude Code config
-  if [ ! -d "$HOME/.claude" ]; then
-    echo "Setting up Claude Code config..."
-    mkdir -p "$HOME/.claude"
-  fi
+  echo "Setting up Claude Code config..."
+  mkdir -p "$HOME/.claude"
+  backup_file "$HOME/.claude/settings.json"
+  backup_file "$HOME/.claude/CLAUDE.md"
+  backup_file "$HOME/.claude.json"
   cp ./claude-code/settings.json "$HOME/.claude/settings.json"
   cp ./claude-code/CLAUDE.md "$HOME/.claude/CLAUDE.md"
   cp ./claude-code/mcp.json "$HOME/.claude.json"
@@ -219,13 +234,14 @@ elif [ "$PLATFORM" = "debian" ]; then
   fi
 
   # Kiro CLI config
-  if [ ! -d "$HOME/.kiro" ]; then
-    echo "Setting up Kiro config..."
-    mkdir -p "$HOME/.kiro/steering" "$HOME/.kiro/settings" "$HOME/.kiro/agents"
-    cp ./kiro/steering/*.md "$HOME/.kiro/steering/"
-    cp ./kiro/settings/*.json "$HOME/.kiro/settings/"
-    cp ./kiro/agents/*.json "$HOME/.kiro/agents/"
-  fi
+  echo "Setting up Kiro config..."
+  backup_dir "$HOME/.kiro/steering"
+  backup_dir "$HOME/.kiro/settings"
+  backup_dir "$HOME/.kiro/agents"
+  mkdir -p "$HOME/.kiro/steering" "$HOME/.kiro/settings" "$HOME/.kiro/agents"
+  cp ./kiro/steering/*.md "$HOME/.kiro/steering/"
+  cp ./kiro/settings/*.json "$HOME/.kiro/settings/"
+  cp ./kiro/agents/*.json "$HOME/.kiro/agents/"
 
   # Set zsh as default shell
   if [ "$SHELL" != "$(which zsh)" ]; then
@@ -261,10 +277,9 @@ if [ "$PLATFORM" = "macos" ]; then
 else
   VALE_DIR="${XDG_CONFIG_HOME:-$HOME/.config}/vale"
 fi
-if [ ! -d "$VALE_DIR" ]; then
-  echo "Setting up Vale config..."
-  cp -R ./vale "$VALE_DIR"
-fi
+echo "Setting up Vale config..."
+backup_dir "$VALE_DIR"
+cp -R ./vale "$VALE_DIR"
 
 # macOS-specific: iTerm2 setup
 # -------------------------------------------------------------------------------
@@ -275,14 +290,10 @@ if [ "$PLATFORM" = "macos" ]; then
   AUTO_LAUNCH_DIR="$HOME/Library/Application Support/iTerm2/Scripts/AutoLaunch"
   DYNAMIC_PROFILES_DIR="$HOME/Library/Application Support/iTerm2/DynamicProfiles"
 
-  if [ ! -d "$DYNAMIC_PROFILES_DIR" ]; then
-    mkdir -p "$DYNAMIC_PROFILES_DIR"
-  fi
+  mkdir -p "$DYNAMIC_PROFILES_DIR" "$AUTO_LAUNCH_DIR"
+  backup_file "$DYNAMIC_PROFILES_DIR/profiles.json"
+  backup_file "$AUTO_LAUNCH_DIR/setprofile.py"
   cp "./iterm2/profiles.json" "$DYNAMIC_PROFILES_DIR"
-
-  if [ ! -d "$AUTO_LAUNCH_DIR" ]; then
-    mkdir -p "$AUTO_LAUNCH_DIR"
-  fi
   cp "./iterm2/setprofile.py" "$AUTO_LAUNCH_DIR"
 fi
 
