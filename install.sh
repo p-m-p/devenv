@@ -217,15 +217,7 @@ if [ ! -d "$TPM_DIR" ]; then
 fi
 "$TPM_DIR/bin/install_plugins"
 
-# vim-plug
-VIM_PLUG_FILE="${XDG_DATA_HOME:-$HOME/.local/share}/nvim/site/autoload/plug.vim"
-if [ ! -f "$VIM_PLUG_FILE" ]; then
-  echo "Installing vim-plug..."
-  curl -fLo "$VIM_PLUG_FILE" --create-dirs \
-    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-fi
-
-# Neovim config
+# Neovim config (vim-plug and plugins auto-install on first run)
 NVIM_CONFIG_DIR="$HOME/.config/nvim"
 if [ ! -d "$NVIM_CONFIG_DIR" ]; then
   echo "Cloning Neovim config..."
@@ -271,7 +263,6 @@ echo ""
 echo "Next steps:"
 echo "  1. Restart your terminal to load the new shell config"
 echo "  2. Press 'y' when prompted to install zsh plugins"
-echo "  3. Open Neovim and run ':PlugInstall' for editor plugins"
 if [ "$PLATFORM" = "macos" ]; then
-  echo "  4. Enable iTerm2 Python runtime: iTerm2 > Scripts > Manage > Install Python Runtime"
+  echo "  3. Enable iTerm2 Python runtime: iTerm2 > Scripts > Manage > Install Python Runtime"
 fi
