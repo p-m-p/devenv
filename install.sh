@@ -281,6 +281,16 @@ echo "Setting up Vale config..."
 backup_dir "$VALE_DIR"
 cp -R ./vale "$VALE_DIR"
 
+# Bat config (Catppuccin theme)
+BAT_CONFIG_DIR="$(bat --config-dir 2>/dev/null || echo "$HOME/.config/bat")"
+echo "Setting up bat config..."
+backup_file "$BAT_CONFIG_DIR/config"
+backup_dir "$BAT_CONFIG_DIR/themes"
+mkdir -p "$BAT_CONFIG_DIR/themes"
+cp ./bat/config "$BAT_CONFIG_DIR/config"
+cp ./bat/themes/*.tmTheme "$BAT_CONFIG_DIR/themes/"
+bat cache --build
+
 # macOS-specific: iTerm2 setup
 # -------------------------------------------------------------------------------
 if [ "$PLATFORM" = "macos" ]; then
