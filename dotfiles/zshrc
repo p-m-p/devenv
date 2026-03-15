@@ -1,5 +1,6 @@
 export EDITOR="nvim"
 export NVM_AUTO_USE=true
+export COLORTERM="truecolor"
 export PATH="$HOME/.local/bin:$PATH"
 
 alias docker="podman"
