@@ -194,7 +194,8 @@ elif [ "$PLATFORM" = "debian" ]; then
   if ! command -v delta &> /dev/null; then
     echo "Installing delta..."
     DELTA_VERSION="0.18.2"
-    curl -Lo /tmp/delta.deb "https://github.com/dandavison/delta/releases/download/${DELTA_VERSION}/git-delta_${DELTA_VERSION}_amd64.deb"
+    ARCH=$(dpkg --print-architecture)
+    curl -Lo /tmp/delta.deb "https://github.com/dandavison/delta/releases/download/${DELTA_VERSION}/git-delta_${DELTA_VERSION}_${ARCH}.deb"
     sudo dpkg -i /tmp/delta.deb
     rm /tmp/delta.deb
   fi
@@ -287,7 +288,8 @@ else
 fi
 echo "Setting up Vale config..."
 backup_dir "$VALE_DIR"
-cp -R ./vale "$VALE_DIR"
+mkdir -p "$VALE_DIR"
+cp -R ./vale/. "$VALE_DIR/"
 
 # Bat config (Catppuccin theme)
 # On Ubuntu, bat is installed as batcat - use symlink or batcat directly
