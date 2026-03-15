@@ -60,4 +60,4 @@ esac
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 eval "$(direnv hook zsh)"
-eval "$(zoxide init zsh)"
+eval "$(zoxide init zsh --cmd cd)"
