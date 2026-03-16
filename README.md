@@ -1,4 +1,6 @@
-# devenv
+<div align="center">
+  <img src="./logo.svg" alt="devenv" width="900"/>
+</div>
 
 Personal development environment setup for macOS and Ubuntu. One script to bootstrap a fresh machine with tools, configs, and the Catppuccin Mocha theme.
 
