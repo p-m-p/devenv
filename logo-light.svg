@@ -1,0 +1,240 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 360" width="900" height="360" role="img" aria-label="devenv logo">
+  <title>devenv</title>
+  <defs>
+    <!-- Catppuccin Latte palette                                      -->
+    <!--  base #eff1f5  crust #dce0e8  mantle #e6e9ef                  -->
+    <!--  surface0 #ccd0da  surface1 #bcc0cc  surface2 #acb0be         -->
+    <!--  overlay0 #9ca0b0  overlay1 #8c8fa1  subtext0 #6c6f85         -->
+    <!--  text #4c4f69  lavender #7287fd  mauve #8839ef                 -->
+    <!--  blue #1e66f5  sapphire #209fb5  sky #04a5e5  teal #179299     -->
+    <!--  green #40a02b  yellow #df8e1d  flamingo #dd7878  pink #ea76cb -->
+
+    <!-- Main title gradient: flamingo → mauve → blue → sapphire -->
+    <linearGradient id="titleGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"   stop-color="#dd7878"/>
+      <stop offset="28%"  stop-color="#8839ef"/>
+      <stop offset="65%"  stop-color="#1e66f5"/>
+      <stop offset="100%" stop-color="#209fb5"/>
+    </linearGradient>
+
+    <!-- Subtitle gradient: sapphire → sky -->
+    <linearGradient id="subGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%"   stop-color="#209fb5"/>
+      <stop offset="50%"  stop-color="#04a5e5"/>
+      <stop offset="100%" stop-color="#209fb5"/>
+    </linearGradient>
+
+    <!-- Soft glow for the main title (lighter spread on a pale bg) -->
+    <filter id="neonGlow" x="-25%" y="-30%" width="150%" height="160%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="8" result="bigBlur"/>
+      <feGaussianBlur in="SourceGraphic" stdDeviation="3" result="smallBlur"/>
+      <feMerge>
+        <feMergeNode in="bigBlur"/>
+        <feMergeNode in="smallBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Soft glow for subtitle and decorations -->
+    <filter id="softGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="2.5" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- CRT scanlines (light tint on pale background) -->
+    <pattern id="scanlines" width="900" height="3" patternUnits="userSpaceOnUse">
+      <rect width="900" height="1.5" y="1.5" fill="#acb0be" opacity="0.12"/>
+    </pattern>
+
+    <!-- Top vignette fade (crust colour) -->
+    <linearGradient id="topFade" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"   stop-color="#dce0e8" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#dce0e8" stop-opacity="0"/>
+    </linearGradient>
+
+    <!-- Bottom vignette fade -->
+    <linearGradient id="bottomFade" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"   stop-color="#dce0e8" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#dce0e8" stop-opacity="0.55"/>
+    </linearGradient>
+  </defs>
+
+  <!-- ═══════════════════════════════════════════════════ -->
+  <!--  BACKGROUND                                         -->
+  <!-- ═══════════════════════════════════════════════════ -->
+  <rect width="900" height="360" fill="#eff1f5"/>
+
+  <!-- Star field (subtler on a light background) -->
+  <g fill="#9ca0b0">
+    <circle cx="48"  cy="22"  r="1.4" opacity="0.7"/>
+    <circle cx="113" cy="70"  r="0.8" opacity="0.5"/>
+    <circle cx="195" cy="14"  r="1.8" opacity="0.6"/>
+    <circle cx="275" cy="52"  r="0.9" opacity="0.5"/>
+    <circle cx="348" cy="30"  r="1.3" opacity="0.7"/>
+    <circle cx="415" cy="12"  r="0.7" opacity="0.4"/>
+    <circle cx="497" cy="45"  r="1.7" opacity="0.5"/>
+    <circle cx="572" cy="20"  r="0.9" opacity="0.6"/>
+    <circle cx="645" cy="62"  r="1.2" opacity="0.7"/>
+    <circle cx="728" cy="25"  r="0.8" opacity="0.5"/>
+    <circle cx="798" cy="48"  r="1.6" opacity="0.6"/>
+    <circle cx="862" cy="16"  r="1.0" opacity="0.5"/>
+    <circle cx="78"  cy="44"  r="0.6" opacity="0.25"/>
+    <circle cx="158" cy="90"  r="0.6" opacity="0.25"/>
+    <circle cx="238" cy="38"  r="0.6" opacity="0.25"/>
+    <circle cx="318" cy="82"  r="0.5" opacity="0.25"/>
+    <circle cx="398" cy="33"  r="0.6" opacity="0.25"/>
+    <circle cx="478" cy="68"  r="0.5" opacity="0.25"/>
+    <circle cx="558" cy="44"  r="0.6" opacity="0.25"/>
+    <circle cx="638" cy="88"  r="0.5" opacity="0.25"/>
+    <circle cx="718" cy="38"  r="0.6" opacity="0.25"/>
+    <circle cx="838" cy="74"  r="0.5" opacity="0.25"/>
+  </g>
+  <!-- Tinted accent stars -->
+  <circle cx="200" cy="14"  r="1.8" fill="#ea76cb" opacity="0.45"/>
+  <circle cx="497" cy="45"  r="1.7" fill="#8839ef" opacity="0.35"/>
+  <circle cx="798" cy="48"  r="1.6" fill="#1e66f5" opacity="0.35"/>
+
+  <!-- ═══════════════════════════════════════════════════ -->
+  <!--  PERSPECTIVE GRID (bottom, TRON-style)              -->
+  <!-- ═══════════════════════════════════════════════════ -->
+  <!-- Vanishing point: 450, 235 -->
+  <g stroke="#bcc0cc" stroke-width="0.6" opacity="0.65">
+    <!-- Horizontal rails -->
+    <line x1="0" y1="285" x2="900" y2="285"/>
+    <line x1="0" y1="300" x2="900" y2="300"/>
+    <line x1="0" y1="316" x2="900" y2="316"/>
+    <line x1="0" y1="334" x2="900" y2="334"/>
+    <line x1="0" y1="355" x2="900" y2="355"/>
+    <!-- Converging perspective lines -->
+    <line x1="450" y1="235" x2="0"   y2="360"/>
+    <line x1="450" y1="235" x2="90"  y2="360"/>
+    <line x1="450" y1="235" x2="190" y2="360"/>
+    <line x1="450" y1="235" x2="300" y2="360"/>
+    <line x1="450" y1="235" x2="450" y2="360"/>
+    <line x1="450" y1="235" x2="600" y2="360"/>
+    <line x1="450" y1="235" x2="710" y2="360"/>
+    <line x1="450" y1="235" x2="810" y2="360"/>
+    <line x1="450" y1="235" x2="900" y2="360"/>
+  </g>
+
+  <!-- ═══════════════════════════════════════════════════ -->
+  <!--  DECORATIVE BORDER FRAME                            -->
+  <!-- ═══════════════════════════════════════════════════ -->
+  <rect x="8"  y="8"  width="884" height="344" fill="none" stroke="#bcc0cc" stroke-width="1.5" rx="3"/>
+  <rect x="13" y="13" width="874" height="334" fill="none" stroke="#ccd0da" stroke-width="0.6" rx="2"/>
+
+  <!-- Corner L-brackets (like an old game HUD) -->
+  <!-- Top-left -->
+  <polyline points="8,62 8,8 62,8"        fill="none" stroke="#8839ef" stroke-width="2.5" opacity="0.85"/>
+  <circle cx="8"  cy="8"   r="3.5" fill="#8839ef" opacity="0.85"/>
+  <!-- Top-right -->
+  <polyline points="838,8 892,8 892,62"    fill="none" stroke="#8839ef" stroke-width="2.5" opacity="0.85"/>
+  <circle cx="892" cy="8"   r="3.5" fill="#8839ef" opacity="0.85"/>
+  <!-- Bottom-left -->
+  <polyline points="8,298 8,352 62,352"    fill="none" stroke="#8839ef" stroke-width="2.5" opacity="0.85"/>
+  <circle cx="8"  cy="352"  r="3.5" fill="#8839ef" opacity="0.85"/>
+  <!-- Bottom-right -->
+  <polyline points="838,352 892,352 892,298" fill="none" stroke="#8839ef" stroke-width="2.5" opacity="0.85"/>
+  <circle cx="892" cy="352"  r="3.5" fill="#8839ef" opacity="0.85"/>
+
+  <!-- Side tick marks -->
+  <line x1="8"   y1="180" x2="18"  y2="180" stroke="#ccd0da" stroke-width="1.5"/>
+  <line x1="882" y1="180" x2="892" y2="180" stroke="#ccd0da" stroke-width="1.5"/>
+
+  <!-- ═══════════════════════════════════════════════════ -->
+  <!--  MAIN TITLE — 3-D EXTRUDE + GLOW                   -->
+  <!--  Five layers build the effect from bottom to top:   -->
+  <!--    1-3. Extrude shadow  (offset copies, mid fills)  -->
+  <!--    4.   Gradient + glow  (the visible title)        -->
+  <!--    5.   Lavender stroke  (crisp edge on top)        -->
+  <!-- ═══════════════════════════════════════════════════ -->
+  <text x="460" y="188" text-anchor="middle"
+        font-family="'Courier New',Courier,monospace"
+        font-size="118" font-weight="900" letter-spacing="4"
+        fill="#9ca0b0">DEVENV</text>
+  <text x="457" y="185" text-anchor="middle"
+        font-family="'Courier New',Courier,monospace"
+        font-size="118" font-weight="900" letter-spacing="4"
+        fill="#bcc0cc">DEVENV</text>
+  <text x="454" y="182" text-anchor="middle"
+        font-family="'Courier New',Courier,monospace"
+        font-size="118" font-weight="900" letter-spacing="4"
+        fill="#dce0e8" opacity="0.9">DEVENV</text>
+
+  <!-- Layer 4: gradient fill + glow (primary visible text) -->
+  <text x="450" y="178" text-anchor="middle"
+        font-family="'Courier New',Courier,monospace"
+        font-size="118" font-weight="900" letter-spacing="4"
+        fill="url(#titleGrad)" filter="url(#neonGlow)">DEVENV</text>
+
+  <!-- Layer 5: crisp lavender outline painted over the glow -->
+  <text x="450" y="178" text-anchor="middle"
+        font-family="'Courier New',Courier,monospace"
+        font-size="118" font-weight="900" letter-spacing="4"
+        fill="none" stroke="#7287fd" stroke-width="1.2" opacity="0.6">DEVENV</text>
+
+  <!-- ═══════════════════════════════════════════════════ -->
+  <!--  DIVIDER ROW WITH DIAMOND                           -->
+  <!-- ═══════════════════════════════════════════════════ -->
+  <!-- Left segment -->
+  <line x1="28"  y1="205" x2="360" y2="205" stroke="#ccd0da" stroke-width="0.8"/>
+  <line x1="360" y1="205" x2="410" y2="205" stroke="#9ca0b0" stroke-width="0.8"/>
+  <!-- Diamond ornament -->
+  <polygon points="450,195 464,205 450,215 436,205" fill="#e6e9ef" stroke="#8839ef" stroke-width="1.5"/>
+  <polygon points="450,199 460,205 450,211 440,205" fill="#8839ef" opacity="0.45"/>
+  <!-- Right segment -->
+  <line x1="490" y1="205" x2="540" y2="205" stroke="#9ca0b0" stroke-width="0.8"/>
+  <line x1="540" y1="205" x2="872" y2="205" stroke="#ccd0da" stroke-width="0.8"/>
+
+  <!-- Sparkles flanking the title -->
+  <text x="108" y="142" font-size="18" fill="#df8e1d" opacity="0.9" filter="url(#softGlow)">✦</text>
+  <text x="790" y="142" font-size="18" fill="#df8e1d" opacity="0.9" filter="url(#softGlow)">✦</text>
+  <text x="74"  y="192" font-size="13" fill="#179299" opacity="0.8">✧</text>
+  <text x="820" y="192" font-size="13" fill="#179299" opacity="0.8">✧</text>
+
+  <!-- ═══════════════════════════════════════════════════ -->
+  <!--  SUBTITLE                                           -->
+  <!-- ═══════════════════════════════════════════════════ -->
+  <text x="450" y="244" text-anchor="middle"
+        font-family="'Courier New',Courier,monospace"
+        font-size="15" font-weight="bold" letter-spacing="6"
+        fill="url(#subGrad)" filter="url(#softGlow)">∴ AI-POWERED DEV ENVIRONMENT ∴</text>
+
+  <!-- ═══════════════════════════════════════════════════ -->
+  <!--  TOOLS TAGLINE                                      -->
+  <!--  Update this text manually when the tool list       -->
+  <!--  changes (it mirrors the README's CLI tools table). -->
+  <!-- ═══════════════════════════════════════════════════ -->
+  <text x="450" y="272" text-anchor="middle"
+        font-family="'Courier New',Courier,monospace"
+        font-size="10.5" letter-spacing="2.8"
+        fill="#6c6f85">NEOVIM · TMUX · ZSH · CLAUDE CODE · KIRO · CATPPUCCIN</text>
+
+  <!-- ═══════════════════════════════════════════════════ -->
+  <!--  BOTTOM TERMINAL DECORATION                         -->
+  <!-- ═══════════════════════════════════════════════════ -->
+  <!-- Prompt -->
+  <text x="38" y="333"
+        font-family="'Courier New',Courier,monospace"
+        font-size="13" fill="#40a02b">~$</text>
+  <!-- Blinking block cursor (SVG animation) -->
+  <rect x="60" y="320" width="8" height="15" fill="#40a02b">
+    <animate attributeName="opacity" values="1;0;1" dur="1.1s" repeatCount="indefinite"/>
+  </rect>
+
+  <!-- Platform badge -->
+  <text x="862" y="333" text-anchor="end"
+        font-family="'Courier New',Courier,monospace"
+        font-size="10" letter-spacing="1.5"
+        fill="#8c8fa1">macOS · Ubuntu</text>
+
+  <!-- ═══════════════════════════════════════════════════ -->
+  <!--  OVERLAYS: SCANLINES + VIGNETTE                     -->
+  <!-- ═══════════════════════════════════════════════════ -->
+  <rect width="900" height="360" fill="url(#scanlines)" opacity="0.4"/>
+  <rect width="900" height="60"  fill="url(#topFade)"/>
+  <rect y="300"  width="900" height="60"  fill="url(#bottomFade)"/>
+</svg>
