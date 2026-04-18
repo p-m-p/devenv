@@ -1,4 +1,3 @@
 {
-  "chat.diffTool": "delta",
-  "chat.defaultAgent": "default"
+  "chat.diffTool": "delta"
 }
