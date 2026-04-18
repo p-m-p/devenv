@@ -246,11 +246,9 @@ elif [ "$PLATFORM" = "debian" ]; then
   echo "Setting up Kiro config..."
   backup_dir "$HOME/.kiro/steering"
   backup_dir "$HOME/.kiro/settings"
-  backup_dir "$HOME/.kiro/agents"
-  mkdir -p "$HOME/.kiro/steering" "$HOME/.kiro/settings" "$HOME/.kiro/agents"
+  mkdir -p "$HOME/.kiro/steering" "$HOME/.kiro/settings"
   cp ./kiro/steering/*.md "$HOME/.kiro/steering/"
   cp ./kiro/settings/*.json "$HOME/.kiro/settings/"
-  cp ./kiro/agents/*.json "$HOME/.kiro/agents/"
 
   # Set zsh as default shell
   if [ "$SHELL" != "$(which zsh)" ]; then
