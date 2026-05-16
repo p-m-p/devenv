@@ -59,3 +59,6 @@ brew 'yamllint'
 
 # Data Processing
 brew 'jq'
+
+# AI Agent Tools
+brew 'beads'
