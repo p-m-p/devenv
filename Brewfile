@@ -63,4 +63,3 @@ brew 'jq'
 # AI Agent Tools
 brew 'beads'
 brew 'dolt'
-brew 'gastown'
